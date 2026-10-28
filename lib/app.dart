@@ -4,17 +4,30 @@ import 'core/theme/app_theme.dart';
 import 'data/store/app_store.dart';
 
 class F1TrackerApp extends StatefulWidget {
-  const F1TrackerApp({super.key});
+  const F1TrackerApp({super.key, this.store});
+  final AppStore? store;
+
   @override
   State<F1TrackerApp> createState() => _F1TrackerAppState();
 }
 
 class _F1TrackerAppState extends State<F1TrackerApp> {
-  final AppStore store = AppStore();
+  late final AppStore store;
+
+  @override
+  void initState() {
+    super.initState();
+    store = widget.store ?? AppStore();
+    if (!store.isInitialized) {
+      store.init();
+    }
+  }
 
   @override
   void dispose() {
-    store.dispose();
+    if (widget.store == null) {
+      store.dispose();
+    }
     super.dispose();
   }
 

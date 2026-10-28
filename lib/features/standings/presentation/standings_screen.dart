@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/widgets/f1_widgets.dart';
 import '../../../data/models/f1_models.dart';
-import '../../../data/repositories/demo_repository.dart';
+import '../../../data/repositories/f1_repository.dart';
+import '../../../data/store/app_store.dart';
 
 class StandingsScreen extends StatefulWidget {
   const StandingsScreen({super.key});
@@ -12,61 +13,261 @@ class StandingsScreen extends StatefulWidget {
 
 class _StandingsScreenState extends State<StandingsScreen> {
   bool constructors = false;
+
   @override
   Widget build(BuildContext context) {
-    final entries = constructors ? DemoRepository.teams : DemoRepository.drivers;
-    final maxPoints = entries.first.points.toDouble();
+    final store = StoreScope.of(context);
+    final drivers = store.drivers;
+    final teams = store.teams;
+
+    final maxPoints = constructors
+        ? (teams.isNotEmpty ? teams.first.points.toDouble() : 1.0)
+        : (drivers.isNotEmpty ? drivers.first.points.toDouble() : 1.0);
+
     return PageContent(children: [
-      F1Header(title: constructors ? 'Конструкторлар' : 'Чемпионат',
-          subtitle: 'Жүргізушілер мен командалардың ұпайлары'),
+      F1Header(
+        title: constructors ? 'Конструкторлар' : 'Чемпионат',
+        subtitle: 'Жүргізушілер мен командалар (SQLite деректер қоры)',
+      ),
       Row(children: [
-        Expanded(child: F1Button(label: 'Жүргізушілер',
-          outlined: constructors,
-          onPressed: () => setState(() => constructors = false))),
+        Expanded(
+          child: F1Button(
+            label: 'Жүргізушілер (${drivers.length})',
+            outlined: constructors,
+            onPressed: () => setState(() => constructors = false),
+          ),
+        ),
         const SizedBox(width: 9),
-        Expanded(child: F1Button(label: 'Командалар',
-          outlined: !constructors,
-          onPressed: () => setState(() => constructors = true))),
+        Expanded(
+          child: F1Button(
+            label: 'Командалар (${teams.length})',
+            outlined: !constructors,
+            onPressed: () => setState(() => constructors = true),
+          ),
+        ),
       ]),
-      const SizedBox(height: 24),
-      const SectionHeading('Чемпионат • демо'),
-      ...entries.map((e) => _StandingRow(value: e,
-        fraction: e.points / maxPoints)),
       const SizedBox(height: 16),
-      Text('Осы рейтинг оқу жобасына арналған демонстрациялық мәндерден тұрады.',
-        style: Theme.of(context).textTheme.bodySmall),
+
+      // 15. Жүргізушілерді сұрыптау басқаруы
+      if (!constructors)
+        Row(
+          children: [
+            const Text('Сұрыптау: ', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
+            const SizedBox(width: 8),
+            DropdownButton<DriverSort>(
+              value: store.driverSort,
+              underline: const SizedBox(),
+              onChanged: (val) {
+                if (val != null) store.setDriverSort(val);
+              },
+              items: const [
+                DropdownMenuItem(
+                  value: DriverSort.pointsDesc,
+                  child: Text('Ұпай (жоғары -> төмен)'),
+                ),
+                DropdownMenuItem(
+                  value: DriverSort.pointsAsc,
+                  child: Text('Ұпай (төмен -> жоғары)'),
+                ),
+                DropdownMenuItem(
+                  value: DriverSort.nameAsc,
+                  child: Text('Аты (А -> Я)'),
+                ),
+                DropdownMenuItem(
+                  value: DriverSort.podiumsDesc,
+                  child: Text('Подиумдар саны'),
+                ),
+              ],
+            ),
+          ],
+        ),
+      const SizedBox(height: 16),
+
+      SectionHeading(constructors ? 'Командалар рейтингі' : 'Жүргізушілер рейтингі'),
+
+      if (!constructors) ...[
+        if (drivers.isEmpty)
+          const EmptyState(
+            title: 'Жүргізушілер табылмады',
+            subtitle: 'Деректер қоры бос.',
+            icon: Icons.person_off_outlined,
+          )
+        else
+          ...drivers.asMap().entries.map((entry) {
+            final d = entry.value;
+            final fraction = (d.points / (maxPoints == 0 ? 1 : maxPoints)).clamp(0.0, 1.0);
+            return _DriverRow(
+              position: entry.key + 1,
+              driver: d,
+              fraction: fraction,
+            );
+          }),
+      ] else ...[
+        if (teams.isEmpty)
+          const EmptyState(
+            title: 'Командалар табылмады',
+            subtitle: 'Деректер қоры бос.',
+            icon: Icons.group_off_outlined,
+          )
+        else
+          ...teams.asMap().entries.map((entry) {
+            final t = entry.value;
+            final fraction = (t.points / (maxPoints == 0 ? 1 : maxPoints)).clamp(0.0, 1.0);
+            return _TeamRow(
+              position: entry.key + 1,
+              team: t,
+              fraction: fraction,
+            );
+          }),
+      ],
+      const SizedBox(height: 16),
+      Text(
+        'Барлық ұпайлар мен позициялар құрылғының локалды SQLite деректер қорынан нақты уақытта есептеледі.',
+        style: Theme.of(context).textTheme.bodySmall,
+      ),
     ]);
   }
 }
 
-class _StandingRow extends StatelessWidget {
-  const _StandingRow({required this.value, required this.fraction});
-  final F1Standing value;
+class _DriverRow extends StatelessWidget {
+  const _DriverRow({
+    required this.position,
+    required this.driver,
+    required this.fraction,
+  });
+
+  final int position;
+  final F1Driver driver;
   final double fraction;
 
   @override
   Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.only(bottom: 11),
-    child: F1Panel(child: Row(children: [
-      SizedBox(width: 42, child: Text('${value.position}'.padLeft(2, '0'),
-        style: TextStyle(color: value.position == 1 ? F1Colors.red : F1Colors.muted,
-          fontSize: 23, fontWeight: FontWeight.w900))),
-      Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(children: [
-            Expanded(child: Text(value.name, maxLines: 1, overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontWeight: FontWeight.w800))),
-            Text('${value.points} PTS', style: const TextStyle(fontSize: 12,
-              fontWeight: FontWeight.w800)),
-          ]),
-          const SizedBox(height: 6),
-          Text(value.team, style: Theme.of(context).textTheme.bodySmall),
-          const SizedBox(height: 10),
-          ClipRRect(borderRadius: BorderRadius.circular(5),
-            child: LinearProgressIndicator(value: fraction, minHeight: 5,
-              color: value.color, backgroundColor: F1Colors.border)),
-        ],
-      )),
-    ])),
-  );
+        padding: const EdgeInsets.only(bottom: 11),
+        child: F1Panel(
+          child: Row(
+            children: [
+              SizedBox(
+                width: 38,
+                child: Text(
+                  '$position'.padLeft(2, '0'),
+                  style: TextStyle(
+                    color: position == 1 ? F1Colors.red : F1Colors.muted,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          '#${driver.number} ${driver.name}',
+                          style: const TextStyle(fontWeight: FontWeight.w800),
+                        ),
+                        const SizedBox(width: 6),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: F1Colors.border,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: Text(driver.code, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                        ),
+                        const Spacer(),
+                        Text('${driver.points} PTS', style: const TextStyle(fontWeight: FontWeight.w800)),
+                      ],
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      '${driver.country} · Подиум: ${driver.podiums}',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    const SizedBox(height: 8),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(4),
+                      child: LinearProgressIndicator(
+                        value: fraction,
+                        minHeight: 5,
+                        color: F1Colors.red,
+                        backgroundColor: F1Colors.border,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+}
+
+class _TeamRow extends StatelessWidget {
+  const _TeamRow({
+    required this.position,
+    required this.team,
+    required this.fraction,
+  });
+
+  final int position;
+  final F1Team team;
+  final double fraction;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(bottom: 11),
+        child: F1Panel(
+          child: Row(
+            children: [
+              SizedBox(
+                width: 38,
+                child: Text(
+                  '$position'.padLeft(2, '0'),
+                  style: TextStyle(
+                    color: position == 1 ? F1Colors.red : F1Colors.muted,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            team.name,
+                            style: const TextStyle(fontWeight: FontWeight.w800),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Text('${team.points} PTS', style: const TextStyle(fontWeight: FontWeight.w800)),
+                      ],
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      '${team.baseCountry} · Қозғалтқыш: ${team.powerUnit} · Титул: ${team.championships}',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    const SizedBox(height: 8),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(4),
+                      child: LinearProgressIndicator(
+                        value: fraction,
+                        minHeight: 5,
+                        color: team.color,
+                        backgroundColor: F1Colors.border,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
 }
