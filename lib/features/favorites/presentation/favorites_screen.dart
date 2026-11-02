@@ -16,7 +16,7 @@ class FavoritesScreen extends StatelessWidget {
     return PageContent(children: [
       const F1Header(
         title: 'Таңдаулылар',
-        subtitle: 'SQLite базасында сақталған Гран-прилер',
+        subtitle: 'Гран-прилер',
       ),
       if (races.isEmpty)
         EmptyState(

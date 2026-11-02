@@ -186,7 +186,7 @@ class F1Driver {
 class F1Race {
   const F1Race({
     required this.id,
-    required this.circuitId,
+    this.circuitId = '',
     required this.name,
     required this.country,
     required this.circuit,
@@ -223,7 +223,7 @@ class F1Race {
 
   factory F1Race.fromMap(Map<String, dynamic> map) => F1Race(
         id: map['id'] as String,
-        circuitId: map['circuit_id'] as String,
+        circuitId: (map['circuit_id'] as String?) ?? '',
         name: map['name'] as String,
         country: map['country'] as String,
         circuit: map['circuit'] as String,
