@@ -53,7 +53,7 @@ class RaceDetailScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     F1Tag(
-                      race.isCompleted ? 'АЯҚТАЛДЫ • SQLITE' : 'АЛДАҒЫ • SQLITE',
+                      race.isCompleted ? 'АЯҚТАЛДЫ' : 'АЛДАҒЫ ЖАРЫС',
                       isActive: !race.isCompleted,
                     ),
                     const SizedBox(height: 16),
@@ -73,7 +73,7 @@ class RaceDetailScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 28),
-        const SectionHeading('Жарыс мәліметі (SQLite Entity)'),
+        const SectionHeading('Жарыс мәліметі'),
         F1ListTile(
           title: 'Өтетін елі',
           subtitle: race.country,
@@ -90,18 +90,17 @@ class RaceDetailScreen extends StatelessWidget {
           leading: const Icon(Icons.repeat_outlined, color: F1Colors.red),
         ),
         const SizedBox(height: 12),
-        const SectionHeading('Деректер қорындағы операциялар (CRUD)'),
-        // 10. Update operation
+        const SectionHeading('Әрекеттер'),
         F1Button(
           label: race.isCompleted
-              ? 'Алдағы жарыстарға қайтару (Update)'
-              : 'Аяқталды деп белгілеу (Update)',
+              ? 'Алдағы жарыстарға қайтару'
+              : 'Аяқталды деп белгілеу',
           outlined: true,
           icon: race.isCompleted ? Icons.replay : Icons.check_circle_outline,
           onPressed: () {
             final updated = race.copyWith(
               isCompleted: !race.isCompleted,
-              date: race.isCompleted ? 'ДЕМО • АЛДАҒЫ' : 'ДЕМО • АЯҚТАЛДЫ',
+              date: race.isCompleted ? 'АЛДАҒЫ' : 'АЯҚТАЛДЫ',
             );
             store.updateRace(updated);
             ScaffoldMessenger.of(context).showSnackBar(
@@ -111,7 +110,7 @@ class RaceDetailScreen extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         F1Button(
-          label: 'Еске салғыш орнату (Create)',
+          label: 'Еске салғыш орнату',
           icon: Icons.notifications_active_outlined,
           onPressed: () => Navigator.pushNamed(
             context,

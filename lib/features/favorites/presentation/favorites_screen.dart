@@ -16,12 +16,12 @@ class FavoritesScreen extends StatelessWidget {
     return PageContent(children: [
       const F1Header(
         title: 'Таңдаулылар',
-        subtitle: 'Гран-прилер',
+        subtitle: 'Сақталған Гран-прилер',
       ),
       if (races.isEmpty)
         EmptyState(
           title: 'Таңдаулылар бос',
-          subtitle: 'Күнтізбеден жүрекшені басып, жарыстарды сақтаңыз. Олар офлайн режимде де сақталады.',
+          subtitle: 'Күнтізбеден жүрекшені басып, жарыстарды сақтаңыз.',
           icon: Icons.favorite_border,
           action: F1Button(
             label: 'Күнтізбеге өту',

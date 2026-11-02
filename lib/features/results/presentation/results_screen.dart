@@ -20,7 +20,7 @@ class ResultsScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Нәтижелер')),
       body: PageContent(children: [
         F1Header(title: 'Жарыс нәтижелері', subtitle: race.name),
-        const F1Tag('SQLITE НӘТИЖЕЛЕРІ', isActive: true),
+        const F1Tag('ФИНИШ ХАТТАМАСЫ', isActive: true),
         const SizedBox(height: 24),
         if (podium.isNotEmpty) ...[
           const SectionHeading('Подиум'),
@@ -75,7 +75,7 @@ class ResultsScreen extends StatelessWidget {
           ),
           const SizedBox(height: 30),
         ],
-        const SectionHeading('Мәре кестесі (SQLite)'),
+        const SectionHeading('Мәре кестесі'),
         if (drivers.isEmpty)
           const EmptyState(
             title: 'Нәтижелер жоқ',

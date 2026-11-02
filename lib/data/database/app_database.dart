@@ -1,8 +1,8 @@
 import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as p;
-import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 import '../models/f1_models.dart';
 
 class AppDatabase {
@@ -21,10 +21,15 @@ class AppDatabase {
   }
 
   static void ensurePlatformInitialized() {
-    if (!kIsWeb && (Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
+    if (kIsWeb) {
+      // Web платформасы үшін WebAssembly + IndexedDB арқылы SQLite
+      databaseFactory = databaseFactoryFfiWeb;
+    } else if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+      // Desktop платформалары үшін FFI арқылы SQLite
       sqfliteFfiInit();
       databaseFactory = databaseFactoryFfi;
     }
+    // Android/iOS: sqflite нативті жұмыс істейді
   }
 
   Future<Database> _initDatabase() async {
@@ -180,15 +185,15 @@ class AppDatabase {
 
     // 4. Races
     const races = [
-      F1Race(id: 'australia', circuitId: 'albert_park', name: 'Австралия Гран-приі', country: 'Австралия', circuit: 'Albert Park', date: '15–17 НАУР • АЯҚТАЛДЫ', round: 1, laps: 58, isCompleted: true, winnerDriverId: 'sai'),
-      F1Race(id: 'japan', circuitId: 'suzuka', name: 'Жапония Гран-приі', country: 'Жапония', circuit: 'Suzuka International Racing Course', date: '05–07 СӘУ • АЯҚТАЛДЫ', round: 2, laps: 53, isCompleted: true, winnerDriverId: 'ver'),
-      F1Race(id: 'monaco', circuitId: 'monaco_track', name: 'Монако Гран-приі', country: 'Монако', circuit: 'Circuit de Monaco', date: '24–26 МАМ • АЯҚТАЛДЫ', round: 3, laps: 78, isCompleted: true, winnerDriverId: 'lec'),
-      F1Race(id: 'usa', circuitId: 'cota', name: 'АҚШ Гран-приі', country: 'АҚШ', circuit: 'Circuit of the Americas, Austin', date: '23–25 ҚАЗ • АЛДАҒЫ', round: 4, laps: 56, isCompleted: false),
-      F1Race(id: 'mexico', circuitId: 'hermanos', name: 'Мексика Гран-приі', country: 'Мексика', circuit: 'Autódromo Hermanos Rodríguez', date: '30 ҚАЗ – 01 ҚАР • АЛДАҒЫ', round: 5, laps: 71, isCompleted: false),
-      F1Race(id: 'brazil', circuitId: 'interlagos', name: 'Сан-Паулу Гран-приі', country: 'Бразилия', circuit: 'Interlagos', date: '06–08 ҚАР • АЛДАҒЫ', round: 6, laps: 71, isCompleted: false),
-      F1Race(id: 'vegas', circuitId: 'las_vegas', name: 'Лас-Вегас Гран-приі', country: 'АҚШ', circuit: 'Las Vegas Street Circuit', date: '19–21 ҚАР • АЛДАҒЫ', round: 7, laps: 50, isCompleted: false),
-      F1Race(id: 'qatar', circuitId: 'lusail', name: 'Катар Гран-приі', country: 'Катар', circuit: 'Lusail International Circuit', date: '27–29 ҚАР • АЛДАҒЫ', round: 8, laps: 57, isCompleted: false),
-      F1Race(id: 'abudhabi', circuitId: 'yas_marina', name: 'Абу-Даби Гран-приі', country: 'БАӘ', circuit: 'Yas Marina Circuit', date: '04–06 ЖЕЛ • АЛДАҒЫ', round: 9, laps: 58, isCompleted: false),
+      F1Race(id: 'australia', circuitId: 'albert_park', name: 'Австралия Гран-приі', country: 'Австралия', circuit: 'Albert Park', date: '15–17 НАУР', round: 1, laps: 58, isCompleted: true, winnerDriverId: 'sai'),
+      F1Race(id: 'japan', circuitId: 'suzuka', name: 'Жапония Гран-приі', country: 'Жапония', circuit: 'Suzuka International Racing Course', date: '05–07 СӘУ', round: 2, laps: 53, isCompleted: true, winnerDriverId: 'ver'),
+      F1Race(id: 'monaco', circuitId: 'monaco_track', name: 'Монако Гран-приі', country: 'Монако', circuit: 'Circuit de Monaco', date: '24–26 МАМ', round: 3, laps: 78, isCompleted: true, winnerDriverId: 'lec'),
+      F1Race(id: 'usa', circuitId: 'cota', name: 'АҚШ Гран-приі', country: 'АҚШ', circuit: 'Circuit of the Americas, Austin', date: '23–25 ҚАЗ', round: 4, laps: 56, isCompleted: false),
+      F1Race(id: 'mexico', circuitId: 'hermanos', name: 'Мексика Гран-приі', country: 'Мексика', circuit: 'Autódromo Hermanos Rodríguez', date: '30 ҚАЗ – 01 ҚАР', round: 5, laps: 71, isCompleted: false),
+      F1Race(id: 'brazil', circuitId: 'interlagos', name: 'Сан-Паулу Гран-приі', country: 'Бразилия', circuit: 'Interlagos', date: '06–08 ҚАР', round: 6, laps: 71, isCompleted: false),
+      F1Race(id: 'vegas', circuitId: 'las_vegas', name: 'Лас-Вегас Гран-приі', country: 'АҚШ', circuit: 'Las Vegas Street Circuit', date: '19–21 ҚАР', round: 7, laps: 50, isCompleted: false),
+      F1Race(id: 'qatar', circuitId: 'lusail', name: 'Катар Гран-приі', country: 'Катар', circuit: 'Lusail International Circuit', date: '27–29 ҚАР', round: 8, laps: 57, isCompleted: false),
+      F1Race(id: 'abudhabi', circuitId: 'yas_marina', name: 'Абу-Даби Гран-приі', country: 'БАӘ', circuit: 'Yas Marina Circuit', date: '04–06 ЖЕЛ', round: 9, laps: 58, isCompleted: false),
     ];
     for (final r in races) {
       batch.insert('races', r.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);

@@ -33,7 +33,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     showDialog<void>(
       context: context,
       builder: (dialogCtx) => AlertDialog(
-        title: const Text('Жаңа Гран-при қосу (Create)'),
+        title: const Text('Жаңа Гран-при қосу'),
         content: SingleChildScrollView(
           child: Form(
             key: formKey,
@@ -96,7 +96,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               store.saveRace(newRace);
               Navigator.pop(dialogCtx);
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Жаңа жарыс SQLite базасына қосылды!')),
+                const SnackBar(content: Text('Жаңа жарыс күнтізбеге қосылды')),
               );
             },
             child: const Text('Қосу'),
@@ -114,10 +114,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
     return PageContent(children: [
       F1Header(
         title: 'Күнтізбе',
-        subtitle: '2026 • Офлайн SQLite жарыстар тізімі',
+        subtitle: '2026 маусымының жарыстар кестесі',
         actions: [
           IconButton(
-            tooltip: 'Жаңа жарыс қосу (Create)',
+            tooltip: 'Жаңа жарыс қосу',
             icon: const Icon(Icons.add_circle_outline, color: F1Colors.red, size: 28),
             onPressed: () => _showAddRaceDialog(context),
           ),

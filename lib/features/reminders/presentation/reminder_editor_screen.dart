@@ -58,8 +58,8 @@ class _ReminderEditorScreenState extends State<ReminderEditorScreen> {
       SnackBar(
         content: Text(
           isNew
-              ? 'Жаңа еске салғыш сақталды (SQLite Create)'
-              : 'Еске салғыш жаңартылды (SQLite Update)',
+              ? 'Жаңа еске салғыш сақталды'
+              : 'Еске салғыш жаңартылды',
         ),
       ),
     );
@@ -74,12 +74,12 @@ class _ReminderEditorScreenState extends State<ReminderEditorScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(editing ? 'Өзгерту (Update)' : 'Құру (Create)'),
+        title: Text(editing ? 'Өңдеу' : 'Жаңа еске салғыш'),
       ),
       body: PageContent(children: [
         F1Header(
           title: editing ? 'Еске салғышты өзгерту' : 'Жаңа еске салғыш',
-          subtitle: 'SQLite жергілікті деректер қорында сақтау',
+          subtitle: 'Жарыс басталар алдында уақытылы хабарландыру',
         ),
         Form(
           key: formKey,
@@ -143,11 +143,11 @@ class _ReminderEditorScreenState extends State<ReminderEditorScreen> {
               const F1Panel(
                 child: Row(
                   children: [
-                    Icon(Icons.storage_outlined, color: F1Colors.red),
+                    Icon(Icons.notifications_active_outlined, color: F1Colors.red),
                     SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        'Офлайн SQLite режимі: барлық жазбалар құрылғы жадына жазылады және қайта қосылғанда сақталады.',
+                        'Еске салғыш белгіленген уақытта жарысты өткізіп алмауға көмектеседі.',
                       ),
                     ),
                   ],
@@ -155,7 +155,7 @@ class _ReminderEditorScreenState extends State<ReminderEditorScreen> {
               ),
               const SizedBox(height: 28),
               F1Button(
-                label: editing ? 'Өзгерісті сақтау (Update)' : 'Еске салғыш қосу (Create)',
+                label: editing ? 'Өзгерісті сақтау' : 'Еске салғыш қосу',
                 onPressed: save,
               ),
             ],

@@ -64,22 +64,22 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 24),
-        const SectionHeading('Локалды деректер қоры (SQLite)'),
+        const SectionHeading('Деректерді басқару'),
         F1Panel(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const ListTile(
                 contentPadding: EdgeInsets.zero,
-                leading: Icon(Icons.storage_outlined, color: F1Colors.red),
-                title: Text('Деректер қорының түрі'),
-                subtitle: Text('SQLite (sqflite / f1_tracker.db) • Офлайн'),
+                leading: Icon(Icons.cloud_off_outlined, color: F1Colors.red),
+                title: Text('Жұмыс режимі'),
+                subtitle: Text('Офлайн режимде толық қолжетімді'),
               ),
               const Divider(),
               ListTile(
                 contentPadding: EdgeInsets.zero,
-                leading: const Icon(Icons.table_chart_outlined, color: F1Colors.red),
-                title: const Text('Кестелер құрылымы (6 Entity)'),
+                leading: const Icon(Icons.storage_outlined, color: F1Colors.red),
+                title: const Text('Сақталған ақпарат'),
                 subtitle: Text(
                   '${store.races.length} жарыс, ${store.drivers.length} жүргізуші, '
                   '${store.teams.length} команда, ${store.circuits.length} трасса, '
@@ -90,14 +90,14 @@ class SettingsScreen extends StatelessWidget {
               ListTile(
                 contentPadding: EdgeInsets.zero,
                 leading: const Icon(Icons.restart_alt, color: F1Colors.amber),
-                title: const Text('Базаны бастапқы күйге қайтару'),
-                subtitle: const Text('Барлық өзгерістерді бастапқы seed деректеріне қайтарады'),
+                title: const Text('Деректерді қалпына келтіру'),
+                subtitle: const Text('Бастапқы күнтізбе мен ұпайлар күйіне қайтару'),
                 onTap: () async {
                   final confirm = await showDialog<bool>(
                     context: context,
                     builder: (ctx) => AlertDialog(
                       title: const Text('Деректерді қалпына келтіру'),
-                      content: const Text('Деректер қоры бастапқы қалпына келеді. Жалғастырасыз ба?'),
+                      content: const Text('Барлық өзгерістер бастапқы күйіне қайтарылады. Жалғастырасыз ба?'),
                       actions: [
                         TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Жоқ')),
                         FilledButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Иә')),
@@ -108,7 +108,7 @@ class SettingsScreen extends StatelessWidget {
                     await store.resetDatabase();
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Деректер қоры бастапқы қалпына келтірілді!')),
+                        const SnackBar(content: Text('Деректер сәтті қалпына келтірілді')),
                       );
                     }
                   }
@@ -119,7 +119,7 @@ class SettingsScreen extends StatelessWidget {
         ),
         const SizedBox(height: 25),
         Text(
-          'Практикалық жұмыс №4: SQLite локалды реляциялық деректер қоры толық интеграцияланған. Барлық CRUD операциялары, іздеу, сүзгілеу және сұрыптау интернетсіз жұмыс істейді.',
+          'F1 Tracker — жарыстар күнтізбесі, нәтижелері мен жеке еске салғыштарыңыз әрқашан құрылғыңызда сақталады.',
           style: Theme.of(context).textTheme.bodySmall,
         ),
       ]),

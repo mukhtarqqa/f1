@@ -27,7 +27,7 @@ class _StandingsScreenState extends State<StandingsScreen> {
     return PageContent(children: [
       F1Header(
         title: constructors ? 'Конструкторлар' : 'Чемпионат',
-        subtitle: 'Жүргізушілер мен командалар (SQLite деректер қоры)',
+        subtitle: 'Жүргізушілер мен командалар рейтингі',
       ),
       Row(children: [
         Expanded(
@@ -122,7 +122,7 @@ class _StandingsScreenState extends State<StandingsScreen> {
       ],
       const SizedBox(height: 16),
       Text(
-        'Барлық ұпайлар мен позициялар құрылғының локалды SQLite деректер қорынан нақты уақытта есептеледі.',
+        'Ағымдағы маусымның жеке және конструкторлық есебі.',
         style: Theme.of(context).textTheme.bodySmall,
       ),
     ]);

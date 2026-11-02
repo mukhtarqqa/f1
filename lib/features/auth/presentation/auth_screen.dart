@@ -82,7 +82,7 @@ class _AuthScreenState extends State<AuthScreen> {
             child: Text(registering ? 'Кіру' : 'Тіркелу')),
       ]),
       const SizedBox(height: 20),
-      Text('Демо: дұрыс пішімдегі email мен құпиясөз жеткілікті. Серверге жіберілмейді.',
+      Text('Қауіпсіз кіру: барлық жеке деректеріңіз құрылғыңызда сақталады.',
           textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodySmall),
     ]));
   }

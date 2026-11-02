@@ -36,11 +36,11 @@ class _SearchScreenState extends State<SearchScreen> {
         '${t.name} ${t.baseCountry} ${t.powerUnit}'.toLowerCase().contains(search)).toList();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Іздеу (Search)')),
+      appBar: AppBar(title: const Text('Іздеу')),
       body: PageContent(children: [
         const F1Header(
           title: 'Іздеу',
-          subtitle: 'SQLite: жарыс, жүргізуші немесе команда',
+          subtitle: 'Жарыс, жүргізуші немесе команда',
         ),
         TextField(
           controller: controller,
@@ -104,7 +104,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'Іздеу сөзін жоғарыдағы өріске енгізіңіз. Барлық сұраныстар локалды деректер қорынан сүзіледі.',
+                    'Іздеу сөзін жоғарыдағы өріске енгізіңіз.',
                   ),
                 ),
               ],

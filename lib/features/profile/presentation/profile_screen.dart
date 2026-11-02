@@ -14,7 +14,7 @@ class ProfileScreen extends StatelessWidget {
     final store = StoreScope.of(context);
 
     return PageContent(children: [
-      const F1Header(title: 'Профиль', subtitle: 'Офлайн аккаунт және деректер'),
+      const F1Header(title: 'Профиль', subtitle: 'Жеке аккаунт және баптаулар'),
       F1Panel(
         child: Row(
           children: [
@@ -71,7 +71,7 @@ class ProfileScreen extends StatelessWidget {
         onTap: () => Navigator.pushNamed(context, Routes.settings),
       ),
       const SizedBox(height: 14),
-      const SectionHeading('Еске салғыштар (SQLite CRUD)'),
+      const SectionHeading('Еске салғыштар'),
       if (store.reminders.isEmpty)
         const F1Panel(
           child: Text('Қазір ешбір еске салғыш сақталмаған. Жаңасын қосып көріңіз!'),
@@ -100,15 +100,15 @@ class ProfileScreen extends StatelessWidget {
                 }
               },
               itemBuilder: (_) => const [
-                PopupMenuItem(value: 'edit', child: Text('Өзгерту (Update)')),
-                PopupMenuItem(value: 'delete', child: Text('Жою (Delete)')),
+                PopupMenuItem(value: 'edit', child: Text('Өңдеу')),
+                PopupMenuItem(value: 'delete', child: Text('Жою')),
               ],
             ),
           );
         }),
       const SizedBox(height: 18),
       F1Button(
-        label: 'Жаңа еске салғыш қосу (Create)',
+        label: 'Жаңа еске салғыш қосу',
         outlined: true,
         icon: Icons.add,
         onPressed: () => Navigator.pushNamed(context, Routes.reminder),

@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
         ),
       F1Header(
         title: 'Басты бет',
-        subtitle: 'Формула-1: офлайн деректер қоры (SQLite)',
+        subtitle: 'Формула-1 әлемі',
         actions: [
           IconButton(
             tooltip: 'Іздеу',
@@ -73,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'КЕЛЕСІ ЖАРЫС • ОФЛАЙН SQLITE',
+                    'КЕЛЕСІ ГРАН-ПРИ',
                     style: TextStyle(
                       color: F1Colors.red,
                       fontSize: 11,
@@ -112,7 +112,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       const SizedBox(height: 26),
-      const SectionHeading('Маусым статистикасы (SQLite)'),
+      const SectionHeading('Маусым статистикасы'),
       Row(
         children: [
           Expanded(
