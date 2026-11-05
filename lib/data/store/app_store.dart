@@ -1,16 +1,75 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import '../database/supabase_service.dart';
+import '../database/race_realtime.dart';
 import '../models/f1_models.dart';
 import '../repositories/f1_repository.dart';
 
-/// Локалды SQLite деректер қорымен синхрондалатын жаһандық күй (State Management)
+enum AuthActionResult { authenticated, emailConfirmationRequired, failed }
+
+/// Supabase PostgreSQL repository мен UI арасындағы жаһандық күй.
 class AppStore extends ChangeNotifier {
-  AppStore({F1Repository? repository}) : _repository = repository ?? F1Repository();
+  AppStore({F1Repository? repository, RaceRealtime? realtime})
+      : _repository = repository ?? F1Repository(),
+        _realtime = realtime ?? SupabaseRaceRealtime();
+
+  final RaceRealtime _realtime;
+  LiveConnection _liveConnection = LiveConnection.stopped;
+  LiveConnection get liveConnection => _liveConnection;
+  bool _disposed = false;
+  int _liveGeneration = 0;
+  int _raceRequest = 0;
+
+  void startRealtime() {
+    if (_disposed ||
+        !isAuthenticated ||
+        _liveConnection != LiveConnection.stopped) {
+      return;
+    }
+    final generation = ++_liveGeneration;
+    _realtime.start(
+      onChange: () {
+        if (!_disposed && generation == _liveGeneration) {
+          unawaited(refreshRaces());
+        }
+      },
+      onConnection: (connection) {
+        if (_disposed || generation != _liveGeneration) return;
+        _liveConnection = connection;
+        notifyListeners();
+        // Fetch again on every join, including reconnects: events missed while
+        // offline are not replayed by Postgres Changes.
+        if (connection == LiveConnection.connected) {
+          unawaited(refreshRaces());
+        }
+      },
+    );
+  }
+
+  Future<void> stopRealtime() async {
+    ++_liveGeneration;
+    ++_raceRequest;
+    _liveConnection = LiveConnection.stopped;
+    await _realtime.stop();
+    if (!_disposed) notifyListeners();
+  }
+
+  Future<void> reconnectRealtime() async {
+    await stopRealtime();
+    if (!_disposed) startRealtime();
+  }
 
   final F1Repository _repository;
   F1Repository get repository => _repository;
 
   bool _initialized = false;
+  bool _authReady = false;
+  bool _authLoading = false;
   bool _isLoading = true;
+  bool _isRaceLoading = false;
   String? _errorMessage;
 
   List<F1Race> _races = [];
@@ -30,11 +89,21 @@ class AppStore extends ChangeNotifier {
   bool _notifications = true;
   bool _darkMode = true;
   String _language = 'Қазақша';
-  String _email = 'f1fan@example.com';
+  String _email = '';
+  String _displayName = '';
+  String? _authError;
+  User? _user;
+  StreamSubscription<AuthState>? _authSubscription;
 
   // Getters
   bool get isInitialized => _initialized;
+  bool get isAuthReady => _authReady;
+  bool get isAuthenticated => _user != null && !_user!.isAnonymous;
+  bool get canManageRaces => _user?.appMetadata['role'] == 'admin';
+  bool get authLoading => _authLoading;
+  String? get authError => _authError;
   bool get isLoading => _isLoading;
+  bool get isRaceLoading => _isRaceLoading;
   String? get errorMessage => _errorMessage;
 
   List<F1Race> get races => List.unmodifiable(_races);
@@ -53,6 +122,7 @@ class AppStore extends ChangeNotifier {
   bool get darkMode => _darkMode;
   String get language => _language;
   String get email => _email;
+  String get displayName => _displayName;
 
   void clearError() {
     _errorMessage = null;
@@ -66,12 +136,135 @@ class AppStore extends ChangeNotifier {
     notifyListeners();
 
     try {
-      await refreshAll();
+      final auth = SupabaseService.client.auth;
+      _updateUser(auth.currentUser);
+      _authSubscription ??= auth.onAuthStateChange.listen((state) {
+        final previousUserId = _user?.id;
+        _updateUser(state.session?.user);
+        if (_user == null) {
+          unawaited(stopRealtime());
+          _favorites = {};
+          _reminders = [];
+          notifyListeners();
+        } else if (_user!.id != previousUserId) {
+          startRealtime();
+          unawaited(refreshAll());
+        }
+      });
+      _authReady = true;
+      if (isAuthenticated) {
+        startRealtime();
+        await refreshAll();
+      }
       _initialized = true;
     } catch (e) {
       _errorMessage = 'Деректерді жүктеу сәтсіз аяқталды: $e';
     } finally {
+      _authReady = true;
       _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  void _updateUser(User? user) {
+    _user = user;
+    _email = user?.email ?? '';
+    _displayName = user?.userMetadata?['full_name']?.toString() ?? '';
+    notifyListeners();
+  }
+
+  Future<AuthActionResult> signIn(String email, String password) async {
+    _authLoading = true;
+    _authError = null;
+    notifyListeners();
+    try {
+      final response = await SupabaseService.client.auth.signInWithPassword(
+        email: email.trim(),
+        password: password,
+      );
+      if (response.user == null) {
+        _authError = 'Кіру сәтсіз аяқталды. Email мен құпиясөзді тексеріңіз.';
+        return AuthActionResult.failed;
+      }
+      _updateUser(response.user);
+      await refreshAll();
+      return AuthActionResult.authenticated;
+    } on AuthException catch (error) {
+      _authError = _friendlyAuthError(error);
+      return AuthActionResult.failed;
+    } catch (_) {
+      _authError =
+          'Сервермен байланыс жоқ. Интернетті тексеріп, қайта көріңіз.';
+      return AuthActionResult.failed;
+    } finally {
+      _authLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future<AuthActionResult> signUp({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    _authLoading = true;
+    _authError = null;
+    notifyListeners();
+    try {
+      final response = await SupabaseService.client.auth.signUp(
+        email: email.trim(),
+        password: password,
+        data: {'full_name': name.trim()},
+      );
+      if (response.user == null) {
+        _authError = 'Тіркелу аяқталмады. Қайта көріңіз.';
+        return AuthActionResult.failed;
+      }
+      if (response.session == null) {
+        return AuthActionResult.emailConfirmationRequired;
+      }
+      _updateUser(response.user);
+      await refreshAll();
+      return AuthActionResult.authenticated;
+    } on AuthException catch (error) {
+      _authError = _friendlyAuthError(error);
+      return AuthActionResult.failed;
+    } catch (_) {
+      _authError =
+          'Сервермен байланыс жоқ. Интернетті тексеріп, қайта көріңіз.';
+      return AuthActionResult.failed;
+    } finally {
+      _authLoading = false;
+      notifyListeners();
+    }
+  }
+
+  String _friendlyAuthError(AuthException error) {
+    final message = error.message.toLowerCase();
+    if (message.contains('invalid login credentials')) {
+      return 'Email немесе құпиясөз қате. Қайта тексеріңіз.';
+    }
+    if (message.contains('user already registered')) {
+      return 'Бұл email бұрын тіркелген. Жүйеге кіріп көріңіз.';
+    }
+    if (message.contains('password should be at least')) {
+      return 'Құпиясөз кемінде 6 таңбадан тұруы керек.';
+    }
+    return 'Аутентификация қатесі: ${error.message}';
+  }
+
+  Future<void> signOut() async {
+    _authError = null;
+    try {
+      await SupabaseService.client.auth.signOut();
+      await stopRealtime();
+      _updateUser(null);
+      _favorites = {};
+      _reminders = [];
+    } on AuthException catch (error) {
+      _authError = 'Жүйеден шығу қатесі: ${error.message}';
+      rethrow;
+    } finally {
       notifyListeners();
     }
   }
@@ -84,12 +277,7 @@ class AppStore extends ChangeNotifier {
       _circuits = await _repository.getCircuits();
       _teams = await _repository.getTeams();
       _drivers = await _repository.getDrivers(sort: _driverSort);
-      _races = await _repository.getRaces(
-        query: _raceSearchQuery,
-        filter: _raceFilter,
-        sort: _raceSort,
-      );
-      _errorMessage = null;
+      await refreshRaces();
     } catch (e) {
       _errorMessage = e.toString();
     }
@@ -124,13 +312,18 @@ class AppStore extends ChangeNotifier {
   }
 
   Future<void> refreshRaces() async {
+    final request = ++_raceRequest;
     try {
-      _races = await _repository.getRaces(
+      final races = await _repository.getRaces(
         query: _raceSearchQuery,
         filter: _raceFilter,
         sort: _raceSort,
       );
+      if (_disposed || request != _raceRequest) return;
+      _races = races;
+      _errorMessage = null;
     } catch (e) {
+      if (_disposed || request != _raceRequest) return;
       _errorMessage = e.toString();
     }
     notifyListeners();
@@ -194,34 +387,40 @@ class AppStore extends ChangeNotifier {
   // Жарыстар (CRUD - 8, 10, 11)
   // ==========================================
 
-  Future<void> saveRace(F1Race race) async {
-    try {
-      await _repository.insertRace(race);
-      await refreshRaces();
-    } catch (e) {
-      _errorMessage = 'Жарысты сақтау қатесі: $e';
-    }
-    notifyListeners();
-  }
+  Future<bool> saveRace(F1Race race) => _mutateRace(
+        () => _repository.insertRace(race),
+        'Жарысты сақтау қатесі',
+      );
 
-  Future<void> updateRace(F1Race race) async {
-    try {
-      await _repository.updateRace(race);
-      await refreshRaces();
-    } catch (e) {
-      _errorMessage = 'Жарысты жаңарту қатесі: $e';
-    }
-    notifyListeners();
-  }
+  Future<bool> updateRace(F1Race race) => _mutateRace(
+        () => _repository.updateRace(race),
+        'Жарысты жаңарту қатесі',
+      );
 
-  Future<void> deleteRace(String id) async {
-    try {
-      await _repository.deleteRace(id);
-      await refreshRaces();
-    } catch (e) {
-      _errorMessage = 'Жарысты жою қатесі: $e';
-    }
+  Future<bool> deleteRace(String id) => _mutateRace(
+        () => _repository.deleteRace(id),
+        'Жарысты жою қатесі',
+      );
+
+  Future<bool> _mutateRace(
+    Future<void> Function() mutation,
+    String errorLabel,
+  ) async {
+    if (_isRaceLoading) return false;
+    _isRaceLoading = true;
+    _errorMessage = null;
     notifyListeners();
+    try {
+      await mutation();
+      await refreshRaces();
+      return true;
+    } catch (e) {
+      _errorMessage = '$errorLabel: $e';
+      return false;
+    } finally {
+      _isRaceLoading = false;
+      notifyListeners();
+    }
   }
 
   // ==========================================
@@ -258,11 +457,6 @@ class AppStore extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setEmail(String value) {
-    _email = value;
-    notifyListeners();
-  }
-
   F1Race raceById(String id) {
     return _races.firstWhere(
       (r) => r.id == id,
@@ -279,16 +473,29 @@ class AppStore extends ChangeNotifier {
             ),
     );
   }
+
+  @override
+  void dispose() {
+    _disposed = true;
+    unawaited(stopRealtime());
+    unawaited(_authSubscription?.cancel());
+    super.dispose();
+  }
 }
 
-/// Access shared application state without extra dependencies.
-class StoreScope extends InheritedNotifier<AppStore> {
-  const StoreScope({super.key, required AppStore store, required super.child})
-      : super(notifier: store);
+/// Keeps the existing store API while exposing it through Provider.
+class StoreScope extends StatelessWidget {
+  const StoreScope({super.key, required this.store, required this.child});
 
-  static AppStore of(BuildContext context) {
-    final scope = context.dependOnInheritedWidgetOfExactType<StoreScope>();
-    assert(scope != null, 'Missing StoreScope above the widget tree');
-    return scope!.notifier!;
-  }
+  final AppStore store;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) => ChangeNotifierProvider<AppStore>.value(
+        value: store,
+        child: child,
+      );
+
+  static AppStore of(BuildContext context, {bool listen = true}) =>
+      Provider.of<AppStore>(context, listen: listen);
 }

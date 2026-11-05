@@ -5,7 +5,7 @@ import '../../../core/widgets/f1_widgets.dart';
 import '../../../data/models/f1_models.dart';
 import '../../../data/store/app_store.dart';
 
-/// 8. Create, 10. Update reminder with SQLite persistence
+/// 8. Create, 10. Update reminder with PostgreSQL persistence
 class ReminderEditorScreen extends StatefulWidget {
   const ReminderEditorScreen({super.key, required this.args});
   final ReminderArgs args;
@@ -27,7 +27,8 @@ class _ReminderEditorScreenState extends State<ReminderEditorScreen> {
     final existing = widget.args.existing;
     raceId = existing?.raceId ?? widget.args.raceId ?? 'usa';
     minutes = existing?.advanceMinutes ?? 60;
-    titleController = TextEditingController(text: existing?.title ?? 'Жарыс еске салғышы');
+    titleController =
+        TextEditingController(text: existing?.title ?? 'Жарыс еске салғышы');
     notesController = TextEditingController(text: existing?.notes ?? '');
   }
 
@@ -40,16 +41,18 @@ class _ReminderEditorScreenState extends State<ReminderEditorScreen> {
 
   void save() {
     if (!formKey.currentState!.validate()) return;
-    final store = StoreScope.of(context);
+    final store = StoreScope.of(context, listen: false);
     final isNew = widget.args.existing == null;
 
     final reminder = F1Reminder(
-      id: widget.args.existing?.id ?? 'rem_${DateTime.now().millisecondsSinceEpoch}',
+      id: widget.args.existing?.id ??
+          'rem_${DateTime.now().millisecondsSinceEpoch}',
       raceId: raceId,
       advanceMinutes: minutes,
       title: titleController.text.trim(),
       notes: notesController.text.trim(),
-      createdAt: widget.args.existing?.createdAt ?? DateTime.now().toIso8601String(),
+      createdAt:
+          widget.args.existing?.createdAt ?? DateTime.now().toIso8601String(),
     );
 
     store.saveReminder(reminder);
@@ -57,9 +60,7 @@ class _ReminderEditorScreenState extends State<ReminderEditorScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          isNew
-              ? 'Жаңа еске салғыш сақталды'
-              : 'Еске салғыш жаңартылды',
+          isNew ? 'Жаңа еске салғыш сақталды' : 'Еске салғыш жаңартылды',
         ),
       ),
     );
@@ -91,21 +92,27 @@ class _ReminderEditorScreenState extends State<ReminderEditorScreen> {
                 hint: 'Мысалы: Басты жарысты жіберіп алма',
                 controller: titleController,
                 prefixIcon: Icons.edit_outlined,
-                validator: (v) => v == null || v.trim().isEmpty ? 'Атауын енгізіңіз' : null,
+                validator: (v) =>
+                    v == null || v.trim().isEmpty ? 'Атауын енгізіңіз' : null,
               ),
               const SizedBox(height: 6),
-              const Text('Гран-приді таңдаңыз', style: TextStyle(fontWeight: FontWeight.w700)),
+              const Text('Гран-приді таңдаңыз',
+                  style: TextStyle(fontWeight: FontWeight.w700)),
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
                 key: ValueKey(raceId),
-                initialValue: races.any((r) => r.id == raceId) ? raceId : (races.isNotEmpty ? races.first.id : null),
+                initialValue: races.any((r) => r.id == raceId)
+                    ? raceId
+                    : (races.isNotEmpty ? races.first.id : null),
                 isExpanded: true,
-                decoration: const InputDecoration(prefixIcon: Icon(Icons.flag_outlined)),
+                decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.flag_outlined)),
                 items: races
                     .map(
                       (race) => DropdownMenuItem(
                         value: race.id,
-                        child: Text('${race.round}-раунд: ${race.name}', overflow: TextOverflow.ellipsis),
+                        child: Text('${race.round}-раунд: ${race.name}',
+                            overflow: TextOverflow.ellipsis),
                       ),
                     )
                     .toList(),
@@ -115,12 +122,14 @@ class _ReminderEditorScreenState extends State<ReminderEditorScreen> {
                 validator: (v) => v == null ? 'Жарысты таңдаңыз' : null,
               ),
               const SizedBox(height: 20),
-              const Text('Еске салу уақыты', style: TextStyle(fontWeight: FontWeight.w700)),
+              const Text('Еске салу уақыты',
+                  style: TextStyle(fontWeight: FontWeight.w700)),
               const SizedBox(height: 10),
               DropdownButtonFormField<int>(
                 initialValue: minutes,
                 isExpanded: true,
-                decoration: const InputDecoration(prefixIcon: Icon(Icons.timer_outlined)),
+                decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.timer_outlined)),
                 items: const [
                   DropdownMenuItem(value: 15, child: Text('15 минут қалғанда')),
                   DropdownMenuItem(value: 30, child: Text('30 минут қалғанда')),
@@ -143,7 +152,8 @@ class _ReminderEditorScreenState extends State<ReminderEditorScreen> {
               const F1Panel(
                 child: Row(
                   children: [
-                    Icon(Icons.notifications_active_outlined, color: F1Colors.red),
+                    Icon(Icons.notifications_active_outlined,
+                        color: F1Colors.red),
                     SizedBox(width: 12),
                     Expanded(
                       child: Text(

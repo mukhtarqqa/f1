@@ -217,7 +217,7 @@ class F1Race {
         'date': date,
         'round': round,
         'laps': laps,
-        'is_completed': isCompleted ? 1 : 0,
+        'is_completed': isCompleted,
         'winner_driver_id': winnerDriverId,
       };
 
@@ -230,7 +230,11 @@ class F1Race {
         date: map['date'] as String,
         round: (map['round'] as num).toInt(),
         laps: (map['laps'] as num?)?.toInt() ?? 56,
-        isCompleted: (map['is_completed'] as int? ?? 0) == 1,
+        isCompleted: switch (map['is_completed']) {
+          bool value => value,
+          num value => value != 0,
+          _ => false,
+        },
         winnerDriverId: map['winner_driver_id'] as String?,
       );
 
@@ -284,7 +288,8 @@ class F1Reminder {
         'title': title,
         'advance_minutes': advanceMinutes,
         'notes': notes,
-        'created_at': createdAt.isEmpty ? DateTime.now().toIso8601String() : createdAt,
+        'created_at':
+            createdAt.isEmpty ? DateTime.now().toIso8601String() : createdAt,
       };
 
   factory F1Reminder.fromMap(Map<String, dynamic> map) => F1Reminder(
@@ -358,4 +363,42 @@ class F1Standing {
   final int points;
   final String team;
   final Color color;
+}
+
+/// Official finishing classification; championship standings are separate.
+class F1RaceResult {
+  const F1RaceResult({
+    required this.raceId,
+    required this.driverId,
+    required this.classificationOrder,
+    required this.position,
+    required this.status,
+    required this.laps,
+    required this.time,
+    required this.points,
+  });
+
+  final String raceId;
+  final String driverId;
+  final int classificationOrder;
+  final int? position;
+  final String status;
+  final int laps;
+  final String time;
+  final num points;
+
+  String get pointsLabel => points == points.roundToDouble()
+      ? points.toInt().toString()
+      : points.toString();
+
+  factory F1RaceResult.fromMap(Map<String, dynamic> map) => F1RaceResult(
+        raceId: map['race_id'] as String,
+        driverId: map['driver_id'] as String,
+        classificationOrder: (map['classification_order'] as num).toInt(),
+        position: (map['position'] as num?)?.toInt(),
+        status: map['status'] as String,
+        laps: (map['laps'] as num).toInt(),
+        time: map['time'] as String,
+        points: map['points'] as num,
+      );
 }

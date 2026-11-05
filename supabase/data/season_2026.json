@@ -1,0 +1,5034 @@
+{
+  "season": 2026,
+  "as_of": "2026-11-05",
+  "sources": [
+    "https://www.formula1.com/en/results/2026/drivers",
+    "https://www.formula1.com/en/results/2026/team",
+    "https://www.formula1.com/en/results/2026/races",
+    "https://www.formula1.com/en/racing/2026"
+  ],
+  "teams": [
+    {
+      "id": "mercedes",
+      "name": "Mercedes",
+      "base_country": "Brackley, United Kingdom",
+      "power_unit": "Mercedes",
+      "points": 630,
+      "championships": 8,
+      "color_hex": 4280808658,
+      "championship_position": 1
+    },
+    {
+      "id": "ferrari",
+      "name": "Ferrari",
+      "base_country": "Maranello, Italy",
+      "power_unit": "Ferrari",
+      "points": 504,
+      "championships": 16,
+      "color_hex": 4293394464,
+      "championship_position": 2
+    },
+    {
+      "id": "red_bull",
+      "name": "Red Bull Racing",
+      "base_country": "Milton Keynes, United Kingdom",
+      "power_unit": "Red Bull Ford",
+      "points": 382,
+      "championships": 6,
+      "color_hex": 4281758150,
+      "championship_position": 3
+    },
+    {
+      "id": "mclaren",
+      "name": "McLaren",
+      "base_country": "Woking, United Kingdom",
+      "power_unit": "Mercedes",
+      "points": 365,
+      "championships": 10,
+      "color_hex": 4294934528,
+      "championship_position": 4
+    },
+    {
+      "id": "racing_bulls",
+      "name": "Racing Bulls",
+      "base_country": "Faenza, Italy",
+      "power_unit": "Red Bull Ford",
+      "points": 108,
+      "championships": 0,
+      "color_hex": 4284912383,
+      "championship_position": 5
+    },
+    {
+      "id": "alpine",
+      "name": "Alpine",
+      "base_country": "Enstone, United Kingdom",
+      "power_unit": "Mercedes",
+      "points": 69,
+      "championships": 2,
+      "color_hex": 4294936508,
+      "championship_position": 6
+    },
+    {
+      "id": "haas",
+      "name": "Haas F1 Team",
+      "base_country": "Kannapolis, United States",
+      "power_unit": "Ferrari",
+      "points": 31,
+      "championships": 0,
+      "color_hex": 4290165437,
+      "championship_position": 7
+    },
+    {
+      "id": "audi",
+      "name": "Audi",
+      "base_country": "Hinwil, Switzerland",
+      "power_unit": "Audi",
+      "points": 27,
+      "championships": 0,
+      "color_hex": 4294247735,
+      "championship_position": 8
+    },
+    {
+      "id": "williams",
+      "name": "Williams",
+      "base_country": "Grove, United Kingdom",
+      "power_unit": "Mercedes",
+      "points": 12,
+      "championships": 8,
+      "color_hex": 4279789787,
+      "championship_position": 9
+    },
+    {
+      "id": "aston_martin",
+      "name": "Aston Martin",
+      "base_country": "Silverstone, United Kingdom",
+      "power_unit": "Honda",
+      "points": 7,
+      "championships": 0,
+      "color_hex": 4280457585,
+      "championship_position": 10
+    },
+    {
+      "id": "cadillac",
+      "name": "Cadillac",
+      "base_country": "Silverstone, United Kingdom",
+      "power_unit": "Ferrari",
+      "points": 0,
+      "championships": 0,
+      "color_hex": 4289374893,
+      "championship_position": 11
+    }
+  ],
+  "drivers": [
+    {
+      "id": "ant",
+      "team_id": "mercedes",
+      "name": "Kimi Antonelli",
+      "code": "ANT",
+      "number": 12,
+      "country": "ITA",
+      "points": 380,
+      "podiums": 16,
+      "championship_position": 1
+    },
+    {
+      "id": "ver",
+      "team_id": "red_bull",
+      "name": "Max Verstappen",
+      "code": "VER",
+      "number": 3,
+      "country": "NED",
+      "points": 261,
+      "podiums": 11,
+      "championship_position": 2
+    },
+    {
+      "id": "ham",
+      "team_id": "ferrari",
+      "name": "Lewis Hamilton",
+      "code": "HAM",
+      "number": 44,
+      "country": "GBR",
+      "points": 259,
+      "podiums": 7,
+      "championship_position": 3
+    },
+    {
+      "id": "rus",
+      "team_id": "mercedes",
+      "name": "George Russell",
+      "code": "RUS",
+      "number": 63,
+      "country": "GBR",
+      "points": 250,
+      "podiums": 8,
+      "championship_position": 4
+    },
+    {
+      "id": "lec",
+      "team_id": "ferrari",
+      "name": "Charles Leclerc",
+      "code": "LEC",
+      "number": 16,
+      "country": "MON",
+      "points": 245,
+      "podiums": 6,
+      "championship_position": 5
+    },
+    {
+      "id": "nor",
+      "team_id": "mclaren",
+      "name": "Lando Norris",
+      "code": "NOR",
+      "number": 1,
+      "country": "GBR",
+      "points": 221,
+      "podiums": 5,
+      "championship_position": 6
+    },
+    {
+      "id": "pia",
+      "team_id": "mclaren",
+      "name": "Oscar Piastri",
+      "code": "PIA",
+      "number": 81,
+      "country": "AUS",
+      "points": 144,
+      "podiums": 2,
+      "championship_position": 7
+    },
+    {
+      "id": "had",
+      "team_id": "red_bull",
+      "name": "Isack Hadjar",
+      "code": "HAD",
+      "number": 6,
+      "country": "FRA",
+      "points": 107,
+      "podiums": 2,
+      "championship_position": 8
+    },
+    {
+      "id": "law",
+      "team_id": "racing_bulls",
+      "name": "Liam Lawson",
+      "code": "LAW",
+      "number": 30,
+      "country": "NZL",
+      "points": 83,
+      "podiums": 0,
+      "championship_position": 9
+    },
+    {
+      "id": "gas",
+      "team_id": "alpine",
+      "name": "Pierre Gasly",
+      "code": "GAS",
+      "number": 10,
+      "country": "FRA",
+      "points": 42,
+      "podiums": 0,
+      "championship_position": 10
+    },
+    {
+      "id": "lin",
+      "team_id": "racing_bulls",
+      "name": "Arvid Lindblad",
+      "code": "LIN",
+      "number": 41,
+      "country": "GBR",
+      "points": 38,
+      "podiums": 0,
+      "championship_position": 11
+    },
+    {
+      "id": "col",
+      "team_id": "alpine",
+      "name": "Franco Colapinto",
+      "code": "COL",
+      "number": 43,
+      "country": "ARG",
+      "points": 27,
+      "podiums": 0,
+      "championship_position": 12
+    },
+    {
+      "id": "bea",
+      "team_id": "haas",
+      "name": "Oliver Bearman",
+      "code": "BEA",
+      "number": 87,
+      "country": "GBR",
+      "points": 23,
+      "podiums": 0,
+      "championship_position": 13
+    },
+    {
+      "id": "bor",
+      "team_id": "audi",
+      "name": "Gabriel Bortoleto",
+      "code": "BOR",
+      "number": 5,
+      "country": "BRA",
+      "points": 14,
+      "podiums": 0,
+      "championship_position": 14
+    },
+    {
+      "id": "hul",
+      "team_id": "audi",
+      "name": "Nico Hulkenberg",
+      "code": "HUL",
+      "number": 27,
+      "country": "GER",
+      "points": 13,
+      "podiums": 0,
+      "championship_position": 15
+    },
+    {
+      "id": "oco",
+      "team_id": "haas",
+      "name": "Esteban Ocon",
+      "code": "OCO",
+      "number": 31,
+      "country": "FRA",
+      "points": 7,
+      "podiums": 0,
+      "championship_position": 16
+    },
+    {
+      "id": "alo",
+      "team_id": "aston_martin",
+      "name": "Fernando Alonso",
+      "code": "ALO",
+      "number": 14,
+      "country": "ESP",
+      "points": 7,
+      "podiums": 0,
+      "championship_position": 17
+    },
+    {
+      "id": "sai",
+      "team_id": "williams",
+      "name": "Carlos Sainz",
+      "code": "SAI",
+      "number": 55,
+      "country": "ESP",
+      "points": 7,
+      "podiums": 0,
+      "championship_position": 18
+    },
+    {
+      "id": "alb",
+      "team_id": "williams",
+      "name": "Alexander Albon",
+      "code": "ALB",
+      "number": 23,
+      "country": "THA",
+      "points": 5,
+      "podiums": 0,
+      "championship_position": 19
+    },
+    {
+      "id": "tsu",
+      "team_id": "racing_bulls",
+      "name": "Yuki Tsunoda",
+      "code": "TSU",
+      "number": 22,
+      "country": "JPN",
+      "points": 1,
+      "podiums": 0,
+      "championship_position": 20
+    },
+    {
+      "id": "hir",
+      "team_id": "haas",
+      "name": "Ryo Hirakawa",
+      "code": "HIR",
+      "number": 50,
+      "country": "JPN",
+      "points": 1,
+      "podiums": 0,
+      "championship_position": 21
+    },
+    {
+      "id": "str",
+      "team_id": "aston_martin",
+      "name": "Lance Stroll",
+      "code": "STR",
+      "number": 18,
+      "country": "CAN",
+      "points": 0,
+      "podiums": 0,
+      "championship_position": 22
+    },
+    {
+      "id": "bot",
+      "team_id": "cadillac",
+      "name": "Valtteri Bottas",
+      "code": "BOT",
+      "number": 77,
+      "country": "FIN",
+      "points": 0,
+      "podiums": 0,
+      "championship_position": 23
+    },
+    {
+      "id": "per",
+      "team_id": "cadillac",
+      "name": "Sergio Perez",
+      "code": "PER",
+      "number": 11,
+      "country": "MEX",
+      "points": 0,
+      "podiums": 0,
+      "championship_position": 24
+    }
+  ],
+  "circuits": [
+    {
+      "id": "hermanos",
+      "name": "Autódromo Hermanos Rodríguez",
+      "country": "Мексика",
+      "city": "Мехико",
+      "length_km": 4.304,
+      "turns_count": 17
+    },
+    {
+      "id": "interlagos",
+      "name": "Autódromo José Carlos Pace",
+      "country": "Бразилия",
+      "city": "Сан-Паулу",
+      "length_km": 4.309,
+      "turns_count": 15
+    },
+    {
+      "id": "las_vegas",
+      "name": "Las Vegas Strip Circuit",
+      "country": "АҚШ",
+      "city": "Лас-Вегас",
+      "length_km": 6.201,
+      "turns_count": 17
+    },
+    {
+      "id": "lusail",
+      "name": "Lusail International Circuit",
+      "country": "Катар",
+      "city": "Лусаил",
+      "length_km": 5.419,
+      "turns_count": 16
+    },
+    {
+      "id": "albert_park",
+      "name": "Albert Park Circuit",
+      "country": "Австралия",
+      "city": "Мельбурн",
+      "length_km": 5.278,
+      "turns_count": 14
+    },
+    {
+      "id": "shanghai",
+      "name": "Shanghai International Circuit",
+      "country": "Қытай",
+      "city": "Шанхай",
+      "length_km": 5.451,
+      "turns_count": 0
+    },
+    {
+      "id": "suzuka",
+      "name": "Suzuka International Racing Course",
+      "country": "Жапония",
+      "city": "Сузука",
+      "length_km": 5.807,
+      "turns_count": 18
+    },
+    {
+      "id": "miami",
+      "name": "Miami International Autodrome",
+      "country": "АҚШ",
+      "city": "Майами",
+      "length_km": 5.412,
+      "turns_count": 0
+    },
+    {
+      "id": "gilles_villeneuve",
+      "name": "Circuit Gilles-Villeneuve",
+      "country": "Канада",
+      "city": "Монреаль",
+      "length_km": 4.361,
+      "turns_count": 0
+    },
+    {
+      "id": "monaco_track",
+      "name": "Circuit de Monaco",
+      "country": "Монако",
+      "city": "Монте-Карло",
+      "length_km": 3.337,
+      "turns_count": 19
+    },
+    {
+      "id": "barcelona",
+      "name": "Circuit de Barcelona-Catalunya",
+      "country": "Испания",
+      "city": "Барселона",
+      "length_km": 4.657,
+      "turns_count": 0
+    },
+    {
+      "id": "red_bull_ring",
+      "name": "Red Bull Ring",
+      "country": "Австрия",
+      "city": "Шпильберг",
+      "length_km": 4.326,
+      "turns_count": 0
+    },
+    {
+      "id": "silverstone",
+      "name": "Silverstone Circuit",
+      "country": "Ұлыбритания",
+      "city": "Сильверстоун",
+      "length_km": 5.891,
+      "turns_count": 0
+    },
+    {
+      "id": "spa",
+      "name": "Circuit de Spa-Francorchamps",
+      "country": "Бельгия",
+      "city": "Спа",
+      "length_km": 7.004,
+      "turns_count": 0
+    },
+    {
+      "id": "hungaroring",
+      "name": "Hungaroring",
+      "country": "Мажарстан",
+      "city": "Модьород",
+      "length_km": 4.381,
+      "turns_count": 0
+    },
+    {
+      "id": "zandvoort",
+      "name": "Circuit Zandvoort",
+      "country": "Нидерланд",
+      "city": "Зандворт",
+      "length_km": 4.259,
+      "turns_count": 0
+    },
+    {
+      "id": "monza",
+      "name": "Autodromo Nazionale Monza",
+      "country": "Италия",
+      "city": "Монца",
+      "length_km": 5.793,
+      "turns_count": 0
+    },
+    {
+      "id": "madring",
+      "name": "MADRING",
+      "country": "Испания",
+      "city": "Мадрид",
+      "length_km": 5.414,
+      "turns_count": 0
+    },
+    {
+      "id": "baku",
+      "name": "Baku City Circuit",
+      "country": "Әзербайжан",
+      "city": "Баку",
+      "length_km": 6.003,
+      "turns_count": 0
+    },
+    {
+      "id": "sepang",
+      "name": "Sepang International Circuit",
+      "country": "Малайзия",
+      "city": "Сепанг",
+      "length_km": 5.543,
+      "turns_count": 0
+    },
+    {
+      "id": "marina_bay",
+      "name": "Marina Bay Street Circuit",
+      "country": "Сингапур",
+      "city": "Сингапур",
+      "length_km": 4.927,
+      "turns_count": 0
+    },
+    {
+      "id": "cota",
+      "name": "Circuit of the Americas",
+      "country": "АҚШ",
+      "city": "Остин",
+      "length_km": 5.513,
+      "turns_count": 20
+    },
+    {
+      "id": "yas_marina",
+      "name": "Yas Marina Circuit",
+      "country": "БАӘ",
+      "city": "Абу-Даби",
+      "length_km": 5.281,
+      "turns_count": 16
+    }
+  ],
+  "races": [
+    {
+      "id": "australia",
+      "circuit_id": "albert_park",
+      "name": "Австралия Гран-приі",
+      "country": "Австралия",
+      "circuit": "Albert Park Circuit",
+      "date": "06–08 НАУР",
+      "round": 1,
+      "laps": 58,
+      "is_completed": true,
+      "winner_driver_id": "rus"
+    },
+    {
+      "id": "china",
+      "circuit_id": "shanghai",
+      "name": "Қытай Гран-приі",
+      "country": "Қытай",
+      "circuit": "Shanghai International Circuit",
+      "date": "13–15 НАУР",
+      "round": 2,
+      "laps": 56,
+      "is_completed": true,
+      "winner_driver_id": "ant"
+    },
+    {
+      "id": "japan",
+      "circuit_id": "suzuka",
+      "name": "Жапония Гран-приі",
+      "country": "Жапония",
+      "circuit": "Suzuka International Racing Course",
+      "date": "27–29 НАУР",
+      "round": 3,
+      "laps": 53,
+      "is_completed": true,
+      "winner_driver_id": "ant"
+    },
+    {
+      "id": "miami",
+      "circuit_id": "miami",
+      "name": "Майами Гран-приі",
+      "country": "АҚШ",
+      "circuit": "Miami International Autodrome",
+      "date": "01–03 МАМ",
+      "round": 4,
+      "laps": 57,
+      "is_completed": true,
+      "winner_driver_id": "ant"
+    },
+    {
+      "id": "canada",
+      "circuit_id": "gilles_villeneuve",
+      "name": "Канада Гран-приі",
+      "country": "Канада",
+      "circuit": "Circuit Gilles-Villeneuve",
+      "date": "22–24 МАМ",
+      "round": 5,
+      "laps": 70,
+      "is_completed": true,
+      "winner_driver_id": "ant"
+    },
+    {
+      "id": "monaco",
+      "circuit_id": "monaco_track",
+      "name": "Монако Гран-приі",
+      "country": "Монако",
+      "circuit": "Circuit de Monaco",
+      "date": "05–07 МАУ",
+      "round": 6,
+      "laps": 78,
+      "is_completed": true,
+      "winner_driver_id": "ant"
+    },
+    {
+      "id": "barcelona_catalunya",
+      "circuit_id": "barcelona",
+      "name": "Барселона-Каталония Гран-приі",
+      "country": "Испания",
+      "circuit": "Circuit de Barcelona-Catalunya",
+      "date": "12–14 МАУ",
+      "round": 7,
+      "laps": 66,
+      "is_completed": true,
+      "winner_driver_id": "ham"
+    },
+    {
+      "id": "austria",
+      "circuit_id": "red_bull_ring",
+      "name": "Австрия Гран-приі",
+      "country": "Австрия",
+      "circuit": "Red Bull Ring",
+      "date": "26–28 МАУ",
+      "round": 8,
+      "laps": 71,
+      "is_completed": true,
+      "winner_driver_id": "rus"
+    },
+    {
+      "id": "great_britain",
+      "circuit_id": "silverstone",
+      "name": "Ұлыбритания Гран-приі",
+      "country": "Ұлыбритания",
+      "circuit": "Silverstone Circuit",
+      "date": "03–05 ШІЛ",
+      "round": 9,
+      "laps": 52,
+      "is_completed": true,
+      "winner_driver_id": "lec"
+    },
+    {
+      "id": "belgium",
+      "circuit_id": "spa",
+      "name": "Бельгия Гран-приі",
+      "country": "Бельгия",
+      "circuit": "Circuit de Spa-Francorchamps",
+      "date": "17–19 ШІЛ",
+      "round": 10,
+      "laps": 44,
+      "is_completed": true,
+      "winner_driver_id": "ant"
+    },
+    {
+      "id": "hungary",
+      "circuit_id": "hungaroring",
+      "name": "Мажарстан Гран-приі",
+      "country": "Мажарстан",
+      "circuit": "Hungaroring",
+      "date": "24–26 ШІЛ",
+      "round": 11,
+      "laps": 70,
+      "is_completed": true,
+      "winner_driver_id": "nor"
+    },
+    {
+      "id": "netherlands",
+      "circuit_id": "zandvoort",
+      "name": "Нидерланд Гран-приі",
+      "country": "Нидерланд",
+      "circuit": "Circuit Zandvoort",
+      "date": "21–23 ТАМ",
+      "round": 12,
+      "laps": 72,
+      "is_completed": true,
+      "winner_driver_id": "nor"
+    },
+    {
+      "id": "italy",
+      "circuit_id": "monza",
+      "name": "Италия Гран-приі",
+      "country": "Италия",
+      "circuit": "Autodromo Nazionale Monza",
+      "date": "04–06 ҚЫР",
+      "round": 13,
+      "laps": 53,
+      "is_completed": true,
+      "winner_driver_id": "ant"
+    },
+    {
+      "id": "spain",
+      "circuit_id": "madring",
+      "name": "Испания Гран-приі",
+      "country": "Испания",
+      "circuit": "MADRING",
+      "date": "11–13 ҚЫР",
+      "round": 14,
+      "laps": 57,
+      "is_completed": true,
+      "winner_driver_id": "ant"
+    },
+    {
+      "id": "azerbaijan",
+      "circuit_id": "baku",
+      "name": "Әзербайжан Гран-приі",
+      "country": "Әзербайжан",
+      "circuit": "Baku City Circuit",
+      "date": "24–26 ҚЫР",
+      "round": 15,
+      "laps": 51,
+      "is_completed": true,
+      "winner_driver_id": "rus"
+    },
+    {
+      "id": "bahrain",
+      "circuit_id": "sepang",
+      "name": "Бахрейн Гран-приі (Малайзия)",
+      "country": "Малайзия",
+      "circuit": "Sepang International Circuit",
+      "date": "02–04 ҚАЗ",
+      "round": 16,
+      "laps": 56,
+      "is_completed": true,
+      "winner_driver_id": "ver"
+    },
+    {
+      "id": "singapore",
+      "circuit_id": "marina_bay",
+      "name": "Сингапур Гран-приі",
+      "country": "Сингапур",
+      "circuit": "Marina Bay Street Circuit",
+      "date": "09–11 ҚАЗ",
+      "round": 17,
+      "laps": 62,
+      "is_completed": true,
+      "winner_driver_id": "ver"
+    },
+    {
+      "id": "usa",
+      "circuit_id": "cota",
+      "name": "АҚШ Гран-приі",
+      "country": "АҚШ",
+      "circuit": "Circuit of the Americas",
+      "date": "23–25 ҚАЗ",
+      "round": 18,
+      "laps": 56,
+      "is_completed": true,
+      "winner_driver_id": "ant"
+    },
+    {
+      "id": "mexico",
+      "circuit_id": "hermanos",
+      "name": "Мексика Гран-приі",
+      "country": "Мексика",
+      "circuit": "Autódromo Hermanos Rodríguez",
+      "date": "30 ҚАЗ – 01 ҚАР",
+      "round": 19,
+      "laps": 71,
+      "is_completed": true,
+      "winner_driver_id": "ver"
+    },
+    {
+      "id": "brazil",
+      "circuit_id": "interlagos",
+      "name": "Бразилия Гран-приі",
+      "country": "Бразилия",
+      "circuit": "Autódromo José Carlos Pace",
+      "date": "06–08 ҚАР",
+      "round": 20,
+      "laps": 71,
+      "is_completed": false,
+      "winner_driver_id": null
+    },
+    {
+      "id": "vegas",
+      "circuit_id": "las_vegas",
+      "name": "Лас-Вегас Гран-приі",
+      "country": "АҚШ",
+      "circuit": "Las Vegas Strip Circuit",
+      "date": "19–21 ҚАР",
+      "round": 21,
+      "laps": 50,
+      "is_completed": false,
+      "winner_driver_id": null
+    },
+    {
+      "id": "qatar",
+      "circuit_id": "lusail",
+      "name": "Катар Гран-приі",
+      "country": "Катар",
+      "circuit": "Lusail International Circuit",
+      "date": "27–29 ҚАР",
+      "round": 22,
+      "laps": 57,
+      "is_completed": false,
+      "winner_driver_id": null
+    },
+    {
+      "id": "abudhabi",
+      "circuit_id": "yas_marina",
+      "name": "БАӘ Гран-приі",
+      "country": "БАӘ",
+      "circuit": "Yas Marina Circuit",
+      "date": "04–06 ЖЕЛ",
+      "round": 23,
+      "laps": 58,
+      "is_completed": false,
+      "winner_driver_id": null
+    }
+  ],
+  "race_results": [
+    {
+      "race_id": "australia",
+      "driver_id": "rus",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 58,
+      "time": "1:23:06.801",
+      "points": 25.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "ant",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 58,
+      "time": "+2.974s",
+      "points": 18.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "lec",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 58,
+      "time": "+15.519s",
+      "points": 15.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "ham",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 58,
+      "time": "+16.144s",
+      "points": 12.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "nor",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 58,
+      "time": "+51.741s",
+      "points": 10.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "ver",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 58,
+      "time": "+54.617s",
+      "points": 8.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "bea",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 57,
+      "time": "+1 lap",
+      "points": 6.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "lin",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 57,
+      "time": "+1 lap",
+      "points": 4.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "bor",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 57,
+      "time": "+1 lap",
+      "points": 2.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "gas",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 57,
+      "time": "+1 lap",
+      "points": 1.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "oco",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 57,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "alb",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 57,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "law",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 57,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "col",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 56,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "sai",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 56,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "per",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 55,
+      "time": "+3 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "str",
+      "classification_order": 17,
+      "position": null,
+      "status": "NC",
+      "laps": 43,
+      "time": "+15 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "alo",
+      "classification_order": 18,
+      "position": null,
+      "status": "NC",
+      "laps": 21,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "bot",
+      "classification_order": 19,
+      "position": null,
+      "status": "NC",
+      "laps": 15,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "had",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 10,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "pia",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 0,
+      "time": "DNS",
+      "points": 0.0
+    },
+    {
+      "race_id": "australia",
+      "driver_id": "hul",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 0,
+      "time": "DNS",
+      "points": 0.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "ant",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 56,
+      "time": "1:33:15.607",
+      "points": 25.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "rus",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 56,
+      "time": "+5.515s",
+      "points": 18.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "ham",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 56,
+      "time": "+25.267s",
+      "points": 15.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "lec",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 56,
+      "time": "+28.894s",
+      "points": 12.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "bea",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 56,
+      "time": "+57.268s",
+      "points": 10.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "gas",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 56,
+      "time": "+59.647s",
+      "points": 8.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "law",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 56,
+      "time": "+80.588s",
+      "points": 6.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "had",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 56,
+      "time": "+87.247s",
+      "points": 4.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "sai",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 2.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "col",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 1.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "hul",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "lin",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "bot",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "oco",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "per",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "ver",
+      "classification_order": 16,
+      "position": null,
+      "status": "NC",
+      "laps": 45,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "alo",
+      "classification_order": 17,
+      "position": null,
+      "status": "NC",
+      "laps": 32,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "str",
+      "classification_order": 18,
+      "position": null,
+      "status": "NC",
+      "laps": 9,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "pia",
+      "classification_order": 19,
+      "position": null,
+      "status": "NC",
+      "laps": 0,
+      "time": "DNS",
+      "points": 0.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "nor",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 0,
+      "time": "DNS",
+      "points": 0.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "bor",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 0,
+      "time": "DNS",
+      "points": 0.0
+    },
+    {
+      "race_id": "china",
+      "driver_id": "alb",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 0,
+      "time": "DNS",
+      "points": 0.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "ant",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 53,
+      "time": "1:28:03.403",
+      "points": 25.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "pia",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 53,
+      "time": "+13.722s",
+      "points": 18.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "lec",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 53,
+      "time": "+15.270s",
+      "points": 15.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "rus",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 53,
+      "time": "+15.754s",
+      "points": 12.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "nor",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 53,
+      "time": "+23.479s",
+      "points": 10.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "ham",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 53,
+      "time": "+25.037s",
+      "points": 8.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "gas",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 53,
+      "time": "+32.340s",
+      "points": 6.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "ver",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 53,
+      "time": "+32.677s",
+      "points": 4.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "law",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 53,
+      "time": "+50.180s",
+      "points": 2.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "oco",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 53,
+      "time": "+51.216s",
+      "points": 1.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "hul",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 53,
+      "time": "+52.280s",
+      "points": 0.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "had",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 53,
+      "time": "+56.154s",
+      "points": 0.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "bor",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 53,
+      "time": "+59.078s",
+      "points": 0.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "lin",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 53,
+      "time": "+59.848s",
+      "points": 0.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "sai",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 53,
+      "time": "+65.008s",
+      "points": 0.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "col",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 53,
+      "time": "+65.773s",
+      "points": 0.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "per",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 53,
+      "time": "+92.453s",
+      "points": 0.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "alo",
+      "classification_order": 18,
+      "position": 18,
+      "status": "18",
+      "laps": 52,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "bot",
+      "classification_order": 19,
+      "position": 19,
+      "status": "19",
+      "laps": 52,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "alb",
+      "classification_order": 20,
+      "position": 20,
+      "status": "20",
+      "laps": 51,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "str",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 30,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "japan",
+      "driver_id": "bea",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 20,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "ant",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 57,
+      "time": "1:33:19.273",
+      "points": 25.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "nor",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 57,
+      "time": "+3.264s",
+      "points": 18.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "pia",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 57,
+      "time": "+27.092s",
+      "points": 15.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "rus",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 57,
+      "time": "+43.051s",
+      "points": 12.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "ver",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 57,
+      "time": "+48.949s",
+      "points": 10.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "ham",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 57,
+      "time": "+53.753s",
+      "points": 8.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "col",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 57,
+      "time": "+61.871s",
+      "points": 6.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "lec",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 57,
+      "time": "+64.245s",
+      "points": 4.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "sai",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 57,
+      "time": "+82.072s",
+      "points": 2.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "alb",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 57,
+      "time": "+90.972s",
+      "points": 1.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "bea",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "bor",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "oco",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "lin",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "alo",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "per",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "str",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "bot",
+      "classification_order": 18,
+      "position": 18,
+      "status": "18",
+      "laps": 55,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "hul",
+      "classification_order": 19,
+      "position": null,
+      "status": "NC",
+      "laps": 7,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "law",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 6,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "gas",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 4,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "miami",
+      "driver_id": "had",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 4,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "ant",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 68,
+      "time": "1:28:15.758",
+      "points": 25.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "ham",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 68,
+      "time": "+10.768s",
+      "points": 18.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "ver",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 68,
+      "time": "+11.276s",
+      "points": 15.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "lec",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 68,
+      "time": "+44.151s",
+      "points": 12.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "had",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 67,
+      "time": "+1 lap",
+      "points": 10.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "col",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 67,
+      "time": "+1 lap",
+      "points": 8.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "law",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 67,
+      "time": "+1 lap",
+      "points": 6.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "gas",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 67,
+      "time": "+1 lap",
+      "points": 4.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "sai",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 67,
+      "time": "+1 lap",
+      "points": 2.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "bea",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 67,
+      "time": "+1 lap",
+      "points": 1.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "pia",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 66,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "hul",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 66,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "bor",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 66,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "oco",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 66,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "str",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 64,
+      "time": "+4 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "bot",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 64,
+      "time": "+4 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "per",
+      "classification_order": 17,
+      "position": null,
+      "status": "NC",
+      "laps": 39,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "nor",
+      "classification_order": 18,
+      "position": null,
+      "status": "NC",
+      "laps": 38,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "rus",
+      "classification_order": 19,
+      "position": null,
+      "status": "NC",
+      "laps": 29,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "alo",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 23,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "alb",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 11,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "canada",
+      "driver_id": "lin",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 0,
+      "time": "DNS",
+      "points": 0.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "ant",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 78,
+      "time": "2:23:31.243",
+      "points": 25.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "ham",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 78,
+      "time": "+6.271s",
+      "points": 18.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "had",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 78,
+      "time": "+23.394s",
+      "points": 15.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "pia",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 78,
+      "time": "+24.261s",
+      "points": 12.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "law",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 78,
+      "time": "+26.553s",
+      "points": 10.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "lin",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 78,
+      "time": "+29.010s",
+      "points": 8.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "gas",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 78,
+      "time": "+30.369s",
+      "points": 6.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "alb",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 78,
+      "time": "+33.413s",
+      "points": 4.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "oco",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 78,
+      "time": "+37.140s",
+      "points": 2.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "alo",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 78,
+      "time": "+41.899s",
+      "points": 1.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "bor",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 78,
+      "time": "+42.748s",
+      "points": 0.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "rus",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 78,
+      "time": "+43.353s",
+      "points": 0.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "hul",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 78,
+      "time": "+44.102s",
+      "points": 0.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "col",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 78,
+      "time": "+48.964s",
+      "points": 0.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "per",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 78,
+      "time": "+49.153s",
+      "points": 0.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "sai",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 70,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "lec",
+      "classification_order": 17,
+      "position": null,
+      "status": "NC",
+      "laps": 64,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "str",
+      "classification_order": 18,
+      "position": null,
+      "status": "NC",
+      "laps": 56,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "nor",
+      "classification_order": 19,
+      "position": null,
+      "status": "NC",
+      "laps": 43,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "bea",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 27,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "bot",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 15,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "monaco",
+      "driver_id": "ver",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 0,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "ham",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 66,
+      "time": "1:32:28.105",
+      "points": 25.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "rus",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 66,
+      "time": "+19.561s",
+      "points": 18.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "nor",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 66,
+      "time": "+23.719s",
+      "points": 15.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "ver",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 66,
+      "time": "+40.497s",
+      "points": 12.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "pia",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 66,
+      "time": "+58.661s",
+      "points": 10.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "had",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 65,
+      "time": "+1 lap",
+      "points": 8.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "gas",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 65,
+      "time": "+1 lap",
+      "points": 6.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "law",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 65,
+      "time": "+1 lap",
+      "points": 4.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "lin",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 65,
+      "time": "+1 lap",
+      "points": 2.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "col",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 65,
+      "time": "+1 lap",
+      "points": 1.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "bor",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 64,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "sai",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 64,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "oco",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 64,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "per",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 63,
+      "time": "+3 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "lec",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 62,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "ant",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 61,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "bea",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 60,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "alb",
+      "classification_order": 18,
+      "position": null,
+      "status": "NC",
+      "laps": 55,
+      "time": "+11 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "alo",
+      "classification_order": 19,
+      "position": null,
+      "status": "NC",
+      "laps": 37,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "hul",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 29,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "bot",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 15,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "barcelona_catalunya",
+      "driver_id": "str",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 5,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "rus",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 71,
+      "time": "1:26:37.979",
+      "points": 25.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "ver",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 71,
+      "time": "+1.611s",
+      "points": 18.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "ant",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 71,
+      "time": "+1.986s",
+      "points": 15.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "pia",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 71,
+      "time": "+21.809s",
+      "points": 12.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "ham",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 71,
+      "time": "+26.393s",
+      "points": 10.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "had",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 71,
+      "time": "+29.399s",
+      "points": 8.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "nor",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 71,
+      "time": "+31.505s",
+      "points": 6.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "lec",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 71,
+      "time": "+45.659s",
+      "points": 4.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "law",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 70,
+      "time": "+1 lap",
+      "points": 2.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "lin",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 70,
+      "time": "+1 lap",
+      "points": 1.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "bor",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 70,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "hul",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 70,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "gas",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 70,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "bea",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 70,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "col",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 70,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "oco",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 69,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "alb",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 69,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "alo",
+      "classification_order": 18,
+      "position": 18,
+      "status": "18",
+      "laps": 68,
+      "time": "+3 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "str",
+      "classification_order": 19,
+      "position": null,
+      "status": "NC",
+      "laps": 45,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "sai",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 23,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "per",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 4,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "austria",
+      "driver_id": "bot",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 2,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "lec",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 52,
+      "time": "1:27:11.335",
+      "points": 25.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "rus",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 52,
+      "time": "+0.427s",
+      "points": 18.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "ham",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 52,
+      "time": "+0.772s",
+      "points": 15.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "nor",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 52,
+      "time": "+1.149s",
+      "points": 12.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "had",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 52,
+      "time": "+1.598s",
+      "points": 10.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "law",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 52,
+      "time": "+2.023s",
+      "points": 8.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "lin",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 52,
+      "time": "+2.214s",
+      "points": 6.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "bor",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 52,
+      "time": "+2.413s",
+      "points": 4.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "col",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 52,
+      "time": "+3.229s",
+      "points": 2.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "gas",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 52,
+      "time": "+3.445s",
+      "points": 1.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "pia",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 52,
+      "time": "+4.014s",
+      "points": 0.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "bea",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 52,
+      "time": "+5.245s",
+      "points": 0.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "oco",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 52,
+      "time": "+5.512s",
+      "points": 0.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "per",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 52,
+      "time": "+7.403s",
+      "points": 0.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "ant",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 52,
+      "time": "+8.005s",
+      "points": 0.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "bot",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 52,
+      "time": "+8.162s",
+      "points": 0.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "sai",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 51,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "alo",
+      "classification_order": 18,
+      "position": 18,
+      "status": "18",
+      "laps": 51,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "str",
+      "classification_order": 19,
+      "position": 19,
+      "status": "19",
+      "laps": 51,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "ver",
+      "classification_order": 20,
+      "position": 20,
+      "status": "20",
+      "laps": 46,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "alb",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 43,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "great_britain",
+      "driver_id": "hul",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 36,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "ant",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 44,
+      "time": "1:24:42.479",
+      "points": 25.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "lec",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 44,
+      "time": "+1.952s",
+      "points": 18.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "ver",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 44,
+      "time": "+11.586s",
+      "points": 15.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "ham",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 44,
+      "time": "+17.245s",
+      "points": 12.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "pia",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 44,
+      "time": "+18.988s",
+      "points": 10.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "had",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 44,
+      "time": "+23.307s",
+      "points": 8.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "nor",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 44,
+      "time": "+24.014s",
+      "points": 6.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "bor",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 44,
+      "time": "+49.140s",
+      "points": 4.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "lin",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 44,
+      "time": "+50.406s",
+      "points": 2.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "col",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 44,
+      "time": "+76.037s",
+      "points": 1.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "gas",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 44,
+      "time": "+76.991s",
+      "points": 0.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "law",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 44,
+      "time": "+77.523s",
+      "points": 0.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "hul",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 44,
+      "time": "+78.348s",
+      "points": 0.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "bea",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 44,
+      "time": "+94.465s",
+      "points": 0.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "alb",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 44,
+      "time": "+104.684s",
+      "points": 0.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "sai",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 44,
+      "time": "+105.856s",
+      "points": 0.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "oco",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 44,
+      "time": "+110.925s",
+      "points": 0.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "bot",
+      "classification_order": 18,
+      "position": 18,
+      "status": "18",
+      "laps": 43,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "alo",
+      "classification_order": 19,
+      "position": 19,
+      "status": "19",
+      "laps": 42,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "str",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 25,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "per",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 13,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "belgium",
+      "driver_id": "rus",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 0,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "nor",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 70,
+      "time": "1:39:56.180",
+      "points": 25.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "ver",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 70,
+      "time": "+15.080s",
+      "points": 18.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "ant",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 70,
+      "time": "+18.728s",
+      "points": 15.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "lec",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 70,
+      "time": "+23.840s",
+      "points": 12.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "ham",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 70,
+      "time": "+24.540s",
+      "points": 10.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "had",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 70,
+      "time": "+55.488s",
+      "points": 8.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "rus",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 70,
+      "time": "+57.503s",
+      "points": 6.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "law",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 69,
+      "time": "+1 lap",
+      "points": 4.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "hul",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 69,
+      "time": "+1 lap",
+      "points": 2.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "lin",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 69,
+      "time": "+1 lap",
+      "points": 1.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "bor",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 69,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "gas",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 69,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "str",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 69,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "alo",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 69,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "col",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 68,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "oco",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 68,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "alb",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 68,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "sai",
+      "classification_order": 18,
+      "position": 18,
+      "status": "18",
+      "laps": 68,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "bea",
+      "classification_order": 19,
+      "position": 19,
+      "status": "19",
+      "laps": 68,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "pia",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 55,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "per",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 48,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "hungary",
+      "driver_id": "bot",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 13,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "nor",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 72,
+      "time": "2:04:44.859",
+      "points": 25.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "ant",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 72,
+      "time": "+11.536s",
+      "points": 18.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "rus",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 72,
+      "time": "+15.906s",
+      "points": 15.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "ham",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 72,
+      "time": "+16.755s",
+      "points": 12.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "lec",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 72,
+      "time": "+17.258s",
+      "points": 10.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "pia",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 72,
+      "time": "+32.332s",
+      "points": 8.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "law",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 72,
+      "time": "+79.915s",
+      "points": 6.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "hul",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 71,
+      "time": "+1 lap",
+      "points": 4.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "alo",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 71,
+      "time": "+1 lap",
+      "points": 2.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "gas",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 71,
+      "time": "+1 lap",
+      "points": 1.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "tsu",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 71,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "lin",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 71,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "bor",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 71,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "col",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 70,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "per",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 70,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "sai",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 70,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "alb",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 66,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "bot",
+      "classification_order": 18,
+      "position": null,
+      "status": "NC",
+      "laps": 61,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "oco",
+      "classification_order": 19,
+      "position": null,
+      "status": "NC",
+      "laps": 52,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "str",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 45,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "bea",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 2,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "netherlands",
+      "driver_id": "ver",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 0,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "ant",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 53,
+      "time": "1:51:15.281",
+      "points": 25.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "rus",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 53,
+      "time": "+3.857s",
+      "points": 18.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "ver",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 53,
+      "time": "+14.718s",
+      "points": 15.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "nor",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 53,
+      "time": "+19.056s",
+      "points": 12.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "pia",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 53,
+      "time": "+19.253s",
+      "points": 10.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "ham",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 53,
+      "time": "+24.655s",
+      "points": 8.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "gas",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 53,
+      "time": "+27.351s",
+      "points": 6.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "lin",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 53,
+      "time": "+45.136s",
+      "points": 4.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "col",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 53,
+      "time": "+47.353s",
+      "points": 2.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "tsu",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 53,
+      "time": "+58.187s",
+      "points": 1.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "bor",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 53,
+      "time": "+65.187s",
+      "points": 0.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "hul",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 53,
+      "time": "+66.187s",
+      "points": 0.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "sai",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 53,
+      "time": "+74.117s",
+      "points": 0.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "law",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 53,
+      "time": "+75.609s",
+      "points": 0.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "bea",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 53,
+      "time": "+78.958s",
+      "points": 0.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "oco",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 52,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "alb",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 52,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "per",
+      "classification_order": 18,
+      "position": 18,
+      "status": "18",
+      "laps": 52,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "bot",
+      "classification_order": 19,
+      "position": 19,
+      "status": "19",
+      "laps": 51,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "str",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 26,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "alo",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 23,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "italy",
+      "driver_id": "lec",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 1,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "ant",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 57,
+      "time": "1:34:23.754",
+      "points": 25.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "ver",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 57,
+      "time": "+4.351s",
+      "points": 18.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "nor",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 57,
+      "time": "+5.089s",
+      "points": 15.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "lec",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 57,
+      "time": "+29.116s",
+      "points": 12.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "rus",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 57,
+      "time": "+29.829s",
+      "points": 10.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "law",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 57,
+      "time": "+86.746s",
+      "points": 8.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "col",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 57,
+      "time": "+94.281s",
+      "points": 6.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "pia",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 57,
+      "time": "+95.839s",
+      "points": 4.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "lin",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 2.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "hul",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 1.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "oco",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "gas",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "bor",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "tsu",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "alb",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "bea",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 56,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "alo",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 55,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "bot",
+      "classification_order": 18,
+      "position": 18,
+      "status": "18",
+      "laps": 54,
+      "time": "+3 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "sai",
+      "classification_order": 19,
+      "position": null,
+      "status": "NC",
+      "laps": 43,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "per",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 31,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "str",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 12,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "spain",
+      "driver_id": "ham",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 6,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "rus",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 51,
+      "time": "1:38:02.143",
+      "points": 25.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "ver",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 51,
+      "time": "+0.196s",
+      "points": 18.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "had",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 51,
+      "time": "+10.704s",
+      "points": 15.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "lec",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 51,
+      "time": "+14.136s",
+      "points": 12.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "ant",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 51,
+      "time": "+14.512s",
+      "points": 10.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "ham",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 51,
+      "time": "+22.382s",
+      "points": 8.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "lin",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 51,
+      "time": "+31.159s",
+      "points": 6.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "oco",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 51,
+      "time": "+31.189s",
+      "points": 4.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "bea",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 51,
+      "time": "+31.929s",
+      "points": 2.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "sai",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 51,
+      "time": "+32.416s",
+      "points": 1.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "hul",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 51,
+      "time": "+33.231s",
+      "points": 0.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "law",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 51,
+      "time": "+34.013s",
+      "points": 0.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "pia",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 51,
+      "time": "+36.401s",
+      "points": 0.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "per",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 51,
+      "time": "+41.400s",
+      "points": 0.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "bor",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 51,
+      "time": "+44.230s",
+      "points": 0.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "bot",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 49,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "col",
+      "classification_order": 17,
+      "position": null,
+      "status": "NC",
+      "laps": 36,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "gas",
+      "classification_order": 18,
+      "position": null,
+      "status": "NC",
+      "laps": 35,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "nor",
+      "classification_order": 19,
+      "position": null,
+      "status": "NC",
+      "laps": 35,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "alb",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 29,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "alo",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 20,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "azerbaijan",
+      "driver_id": "str",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 7,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "ver",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 55,
+      "time": "1:47:14.808",
+      "points": 25.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "ant",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 55,
+      "time": "+2.307s",
+      "points": 18.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "ham",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 55,
+      "time": "+4.919s",
+      "points": 15.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "lec",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 55,
+      "time": "+7.258s",
+      "points": 12.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "had",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 55,
+      "time": "+8.571s",
+      "points": 10.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "pia",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 55,
+      "time": "+9.454s",
+      "points": 8.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "law",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 55,
+      "time": "+12.753s",
+      "points": 6.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "alo",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 55,
+      "time": "+13.372s",
+      "points": 4.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "nor",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 55,
+      "time": "+13.993s",
+      "points": 2.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "lin",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 55,
+      "time": "+15.928s",
+      "points": 1.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "hul",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 55,
+      "time": "+17.404s",
+      "points": 0.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "str",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 55,
+      "time": "+18.052s",
+      "points": 0.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "col",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 55,
+      "time": "+18.997s",
+      "points": 0.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "bea",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 55,
+      "time": "+22.305s",
+      "points": 0.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "oco",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 55,
+      "time": "+22.532s",
+      "points": 0.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "gas",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 55,
+      "time": "+23.315s",
+      "points": 0.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "sai",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 55,
+      "time": "+25.431s",
+      "points": 0.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "bor",
+      "classification_order": 18,
+      "position": 18,
+      "status": "18",
+      "laps": 55,
+      "time": "+28.233s",
+      "points": 0.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "per",
+      "classification_order": 19,
+      "position": 19,
+      "status": "19",
+      "laps": 55,
+      "time": "+29.310s",
+      "points": 0.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "rus",
+      "classification_order": 20,
+      "position": 20,
+      "status": "20",
+      "laps": 49,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "alb",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 41,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "bahrain",
+      "driver_id": "bot",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 7,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "ver",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 62,
+      "time": "1:42:00.785",
+      "points": 25.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "lec",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 62,
+      "time": "+7.335s",
+      "points": 18.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "ant",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 62,
+      "time": "+24.573s",
+      "points": 15.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "nor",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 62,
+      "time": "+40.506s",
+      "points": 12.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "pia",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 62,
+      "time": "+49.644s",
+      "points": 10.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "ham",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 62,
+      "time": "+53.188s",
+      "points": 8.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "law",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 62,
+      "time": "+81.666s",
+      "points": 6.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "hul",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 62,
+      "time": "+83.386s",
+      "points": 4.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "rus",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 62,
+      "time": "+84.677s",
+      "points": 2.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "had",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 62,
+      "time": "+90.862s",
+      "points": 1.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "gas",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 61,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "bea",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 61,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "oco",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 61,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "sai",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 61,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "lin",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 61,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "alo",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 61,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "per",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 60,
+      "time": "+2 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "alb",
+      "classification_order": 18,
+      "position": 18,
+      "status": "18",
+      "laps": 59,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "bot",
+      "classification_order": 19,
+      "position": 19,
+      "status": "19",
+      "laps": 59,
+      "time": "+3 laps",
+      "points": 0.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "str",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 36,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "col",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 29,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "singapore",
+      "driver_id": "bor",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 7,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "ant",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 56,
+      "time": "1:35:16.650",
+      "points": 25.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "lec",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 56,
+      "time": "+13.078s",
+      "points": 18.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "ver",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 56,
+      "time": "+17.485s",
+      "points": 15.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "ham",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 56,
+      "time": "+18.515s",
+      "points": 12.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "nor",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 56,
+      "time": "+30.521s",
+      "points": 10.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "had",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 56,
+      "time": "+34.373s",
+      "points": 8.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "pia",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 56,
+      "time": "+52.674s",
+      "points": 6.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "rus",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 56,
+      "time": "+54.303s",
+      "points": 4.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "law",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 56,
+      "time": "+79.183s",
+      "points": 2.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "gas",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 56,
+      "time": "+87.516s",
+      "points": 1.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "hul",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 56,
+      "time": "+94.945s",
+      "points": 0.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "lin",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "bor",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "oco",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "str",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "alo",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "alb",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "sai",
+      "classification_order": 18,
+      "position": 18,
+      "status": "18",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "per",
+      "classification_order": 19,
+      "position": 19,
+      "status": "19",
+      "laps": 55,
+      "time": "+1 lap",
+      "points": 0.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "bot",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 48,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "col",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 35,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "usa",
+      "driver_id": "bea",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 24,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "ver",
+      "classification_order": 1,
+      "position": 1,
+      "status": "1",
+      "laps": 71,
+      "time": "2:20:28.772",
+      "points": 25.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "ham",
+      "classification_order": 2,
+      "position": 2,
+      "status": "2",
+      "laps": 71,
+      "time": "+0.799s",
+      "points": 18.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "ant",
+      "classification_order": 3,
+      "position": 3,
+      "status": "3",
+      "laps": 71,
+      "time": "+4.006s",
+      "points": 15.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "lec",
+      "classification_order": 4,
+      "position": 4,
+      "status": "4",
+      "laps": 71,
+      "time": "+10.707s",
+      "points": 12.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "nor",
+      "classification_order": 5,
+      "position": 5,
+      "status": "5",
+      "laps": 71,
+      "time": "+11.778s",
+      "points": 10.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "rus",
+      "classification_order": 6,
+      "position": 6,
+      "status": "6",
+      "laps": 71,
+      "time": "+12.263s",
+      "points": 8.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "law",
+      "classification_order": 7,
+      "position": 7,
+      "status": "7",
+      "laps": 71,
+      "time": "+20.899s",
+      "points": 6.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "bor",
+      "classification_order": 8,
+      "position": 8,
+      "status": "8",
+      "laps": 71,
+      "time": "+22.041s",
+      "points": 4.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "had",
+      "classification_order": 9,
+      "position": 9,
+      "status": "9",
+      "laps": 71,
+      "time": "+22.503s",
+      "points": 2.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "hir",
+      "classification_order": 10,
+      "position": 10,
+      "status": "10",
+      "laps": 71,
+      "time": "+25.373s",
+      "points": 1.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "alb",
+      "classification_order": 11,
+      "position": 11,
+      "status": "11",
+      "laps": 71,
+      "time": "+27.562s",
+      "points": 0.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "sai",
+      "classification_order": 12,
+      "position": 12,
+      "status": "12",
+      "laps": 71,
+      "time": "+28.638s",
+      "points": 0.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "pia",
+      "classification_order": 13,
+      "position": 13,
+      "status": "13",
+      "laps": 71,
+      "time": "+29.475s",
+      "points": 0.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "hul",
+      "classification_order": 14,
+      "position": 14,
+      "status": "14",
+      "laps": 71,
+      "time": "+29.977s",
+      "points": 0.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "col",
+      "classification_order": 15,
+      "position": 15,
+      "status": "15",
+      "laps": 71,
+      "time": "+30.204s",
+      "points": 0.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "per",
+      "classification_order": 16,
+      "position": 16,
+      "status": "16",
+      "laps": 71,
+      "time": "+30.695s",
+      "points": 0.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "gas",
+      "classification_order": 17,
+      "position": 17,
+      "status": "17",
+      "laps": 71,
+      "time": "+51.483s",
+      "points": 0.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "lin",
+      "classification_order": 18,
+      "position": null,
+      "status": "NC",
+      "laps": 58,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "bea",
+      "classification_order": 19,
+      "position": null,
+      "status": "NC",
+      "laps": 47,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "bot",
+      "classification_order": 20,
+      "position": null,
+      "status": "NC",
+      "laps": 42,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "str",
+      "classification_order": 21,
+      "position": null,
+      "status": "NC",
+      "laps": 5,
+      "time": "DNF",
+      "points": 0.0
+    },
+    {
+      "race_id": "mexico",
+      "driver_id": "alo",
+      "classification_order": 22,
+      "position": null,
+      "status": "NC",
+      "laps": 5,
+      "time": "DNF",
+      "points": 0.0
+    }
+  ]
+}

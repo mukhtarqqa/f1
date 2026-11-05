@@ -40,50 +40,106 @@ class _AuthScreenState extends State<AuthScreen> {
     return null;
   }
 
-  void submit() {
+  Future<void> submit() async {
     if (!formKey.currentState!.validate()) return;
-    // Demo-only login: no network authentication and no password stored.
-    StoreScope.of(context).setEmail(email.text.trim());
-    Navigator.pushNamedAndRemoveUntil(context, Routes.shell, (_) => false);
+    final store = StoreScope.of(context, listen: false);
+    final result = widget.mode == AuthMode.register
+        ? await store.signUp(
+            name: name.text,
+            email: email.text,
+            password: password.text,
+          )
+        : await store.signIn(email.text, password.text);
+
+    if (!mounted) return;
+    if (result == AuthActionResult.authenticated) {
+      Navigator.pushNamedAndRemoveUntil(context, Routes.shell, (_) => false);
+    } else if (result == AuthActionResult.emailConfirmationRequired) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Кіру алдында email мекенжайын растаңыз.'),
+        ),
+      );
+      Navigator.pushReplacementNamed(context, Routes.login);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final registering = widget.mode == AuthMode.register;
-    return Scaffold(body: PageContent(children: [
+    final store = StoreScope.of(context);
+    return Scaffold(
+        body: PageContent(children: [
       const F1Logo(),
       const SizedBox(height: 46),
       Text(registering ? 'Аккаунт құру' : 'Қайта оралдыңыз!',
           style: Theme.of(context).textTheme.headlineLarge),
       const SizedBox(height: 9),
-      Text(registering ? 'F1 жаңалықтарын өзіңізге бейімдеңіз.'
-          : 'Кіру үшін деректеріңізді енгізіңіз.',
+      Text(
+          registering
+              ? 'F1 жаңалықтарын өзіңізге бейімдеңіз.'
+              : 'Кіру үшін деректеріңізді енгізіңіз.',
           style: Theme.of(context).textTheme.bodySmall),
       const SizedBox(height: 43),
-      Form(key: formKey, child: Column(children: [
-        if (registering) F1Input(label: 'Аты-жөніңіз', controller: name,
-            prefixIcon: Icons.person_outline,
-            validator: (v) => v == null || v.trim().isEmpty
-                ? 'Атыңызды енгізіңіз' : null),
-        F1Input(label: 'Email', hint: 'example@email.com', controller: email,
-            keyboardType: TextInputType.emailAddress,
-            prefixIcon: Icons.email_outlined, validator: validateEmail),
-        F1Input(label: 'Құпиясөз', controller: password, obscureText: true,
-            prefixIcon: Icons.lock_outline, validator: validatePassword),
-        const SizedBox(height: 12),
-        F1Button(label: registering ? 'Тіркелу' : 'Кіру', onPressed: submit),
-      ])),
+      Form(
+          key: formKey,
+          child: Column(children: [
+            if (registering)
+              F1Input(
+                  label: 'Аты-жөніңіз',
+                  controller: name,
+                  prefixIcon: Icons.person_outline,
+                  validator: (v) => v == null || v.trim().isEmpty
+                      ? 'Атыңызды енгізіңіз'
+                      : null),
+            F1Input(
+                label: 'Email',
+                hint: 'example@email.com',
+                controller: email,
+                keyboardType: TextInputType.emailAddress,
+                prefixIcon: Icons.email_outlined,
+                validator: validateEmail),
+            F1Input(
+                label: 'Құпиясөз',
+                controller: password,
+                obscureText: true,
+                prefixIcon: Icons.lock_outline,
+                validator: validatePassword),
+            const SizedBox(height: 12),
+            if (store.authError != null) ...[
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  store.authError!,
+                  style: TextStyle(color: Theme.of(context).colorScheme.error),
+                ),
+              ),
+              const SizedBox(height: 12),
+            ],
+            F1Button(
+              label: store.authLoading
+                  ? 'Күте тұрыңыз...'
+                  : registering
+                      ? 'Тіркелу'
+                      : 'Кіру',
+              onPressed: store.authLoading ? null : submit,
+            ),
+          ])),
       const SizedBox(height: 24),
-      Wrap(crossAxisAlignment: WrapCrossAlignment.center,
-          alignment: WrapAlignment.center, children: [
-        Text(registering ? 'Аккаунтыңыз бар ма?' : 'Аккаунтыңыз жоқ па?'),
-        TextButton(onPressed: () => Navigator.pushReplacementNamed(
-            context, registering ? Routes.login : Routes.register),
-            child: Text(registering ? 'Кіру' : 'Тіркелу')),
-      ]),
+      Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          alignment: WrapAlignment.center,
+          children: [
+            Text(registering ? 'Аккаунтыңыз бар ма?' : 'Аккаунтыңыз жоқ па?'),
+            TextButton(
+                onPressed: () => Navigator.pushReplacementNamed(
+                    context, registering ? Routes.login : Routes.register),
+                child: Text(registering ? 'Кіру' : 'Тіркелу')),
+          ]),
       const SizedBox(height: 20),
-      Text('Қауіпсіз кіру: барлық жеке деректеріңіз құрылғыңызда сақталады.',
-          textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodySmall),
+      Text('Қолданба деректері Supabase PostgreSQL бұлттық қорында сақталады.',
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.bodySmall),
     ]));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/navigation/app_router.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/widgets/f1_widgets.dart';
@@ -35,7 +36,12 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('F1 Жанкүйері', style: Theme.of(context).textTheme.titleLarge),
+                  Text(
+                    store.displayName.isEmpty
+                        ? 'F1 Жанкүйері'
+                        : store.displayName,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                   const SizedBox(height: 5),
                   Text(
                     store.email,
@@ -51,9 +57,13 @@ class ProfileScreen extends StatelessWidget {
       const SizedBox(height: 22),
       Row(
         children: [
-          Expanded(child: StatCard(value: '${store.favorites.length}', label: 'Таңдаулы')),
+          Expanded(
+              child: StatCard(
+                  value: '${store.favorites.length}', label: 'Таңдаулы')),
           const SizedBox(width: 12),
-          Expanded(child: StatCard(value: '${store.reminders.length}', label: 'Еске салғыш')),
+          Expanded(
+              child: StatCard(
+                  value: '${store.reminders.length}', label: 'Еске салғыш')),
         ],
       ),
       const SizedBox(height: 25),
@@ -74,15 +84,18 @@ class ProfileScreen extends StatelessWidget {
       const SectionHeading('Еске салғыштар'),
       if (store.reminders.isEmpty)
         const F1Panel(
-          child: Text('Қазір ешбір еске салғыш сақталмаған. Жаңасын қосып көріңіз!'),
+          child: Text(
+              'Қазір ешбір еске салғыш сақталмаған. Жаңасын қосып көріңіз!'),
         )
       else
         ...store.reminders.map((F1Reminder reminder) {
           final race = store.raceById(reminder.raceId);
           return F1ListTile(
             title: reminder.title,
-            subtitle: '${race.name} · ${reminder.advanceMinutes} мин қалғанда${reminder.notes.isNotEmpty ? ' · ${reminder.notes}' : ''}',
-            leading: const Icon(Icons.notifications_active_outlined, color: F1Colors.red),
+            subtitle:
+                '${race.name} · ${reminder.advanceMinutes} мин қалғанда${reminder.notes.isNotEmpty ? ' · ${reminder.notes}' : ''}',
+            leading: const Icon(Icons.notifications_active_outlined,
+                color: F1Colors.red),
             trailing: PopupMenuButton<String>(
               tooltip: 'Еске салғыш әрекеттері',
               onSelected: (choice) {
@@ -117,8 +130,21 @@ class ProfileScreen extends StatelessWidget {
       F1Button(
         label: 'Шығу',
         outlined: true,
-        onPressed: () => Navigator.pushNamedAndRemoveUntil(context, Routes.login, (_) => false),
+        onPressed: () => _signOut(context, store),
       ),
     ]);
+  }
+}
+
+Future<void> _signOut(BuildContext context, AppStore store) async {
+  try {
+    await store.signOut();
+    if (!context.mounted) return;
+    Navigator.pushNamedAndRemoveUntil(context, Routes.login, (_) => false);
+  } on AuthException catch (error) {
+    if (!context.mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Жүйеден шығу қатесі: ${error.message}')),
+    );
   }
 }

@@ -90,14 +90,14 @@ class SettingsScreen extends StatelessWidget {
               ListTile(
                 contentPadding: EdgeInsets.zero,
                 leading: const Icon(Icons.restart_alt, color: F1Colors.amber),
-                title: const Text('Деректерді қалпына келтіру'),
-                subtitle: const Text('Бастапқы күнтізбе мен ұпайлар күйіне қайтару'),
+                title: const Text('Жеке деректерді тазарту'),
+                subtitle: const Text('Таңдаулылар мен еске салғыштарды өшіру'),
                 onTap: () async {
                   final confirm = await showDialog<bool>(
                     context: context,
                     builder: (ctx) => AlertDialog(
-                      title: const Text('Деректерді қалпына келтіру'),
-                      content: const Text('Барлық өзгерістер бастапқы күйіне қайтарылады. Жалғастырасыз ба?'),
+                      title: const Text('Жеке деректерді тазарту'),
+                      content: const Text('Таңдаулылар мен еске салғыштар өшіріледі. Жалғастырасыз ба?'),
                       actions: [
                         TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Жоқ')),
                         FilledButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Иә')),
@@ -108,7 +108,7 @@ class SettingsScreen extends StatelessWidget {
                     await store.resetDatabase();
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Деректер сәтті қалпына келтірілді')),
+                        const SnackBar(content: Text('Жеке деректер өшірілді')),
                       );
                     }
                   }
@@ -119,7 +119,7 @@ class SettingsScreen extends StatelessWidget {
         ),
         const SizedBox(height: 25),
         Text(
-          'F1 Tracker — жарыстар күнтізбесі, нәтижелері мен жеке еске салғыштарыңыз әрқашан құрылғыңызда сақталады.',
+          'F1 Tracker — жарыстар күнтізбесі мен жеке еске салғыштарыңыз PostgreSQL бұлттық қорында сақталады.',
           style: Theme.of(context).textTheme.bodySmall,
         ),
       ]),

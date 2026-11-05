@@ -1,12 +1,15 @@
-import 'package:sqflite/sqflite.dart';
-import '../database/app_database.dart';
+import 'dart:async';
+
+import 'package:supabase_flutter/supabase_flutter.dart';
+import '../database/supabase_service.dart';
 import '../models/f1_models.dart';
 
 enum RaceFilter { all, upcoming, completed }
+
 enum RaceSort { roundAsc, roundDesc, nameAsc, nameDesc }
+
 enum DriverSort { pointsDesc, pointsAsc, nameAsc, podiumsDesc }
 
-/// Қателерді ұстау және өңдеу класы
 class F1DatabaseException implements Exception {
   const F1DatabaseException(this.message, [this.originalError]);
   final String message;
@@ -16,132 +19,129 @@ class F1DatabaseException implements Exception {
   String toString() => 'F1DatabaseException: $message ($originalError)';
 }
 
-/// 12. Деректер қорымен жұмыс істейтін Repository қабаты
+/// Data access through Supabase PostgREST backed by PostgreSQL.
 class F1Repository {
-  F1Repository({AppDatabase? db}) : _appDb = db ?? AppDatabase.instance;
-  final AppDatabase _appDb;
+  F1Repository({SupabaseClient? client}) : _providedClient = client;
 
-  Future<Database> get _db => _appDb.database;
+  static const _requestTimeout = Duration(seconds: 15);
+  final SupabaseClient? _providedClient;
+  SupabaseClient get _client => _providedClient ?? SupabaseService.client;
 
-  // ==========================================
-  // RACES (CRUD, Search, Filter, Sort)
-  // ==========================================
+  Future<T> _request<T>(
+    Future<T> Function() action,
+    String errorMessage,
+  ) async {
+    try {
+      return await action().timeout(_requestTimeout);
+    } on TimeoutException catch (error) {
+      throw F1DatabaseException(
+        'Сервер 15 секунд ішінде жауап бермеді. Кейінірек қайталап көріңіз.',
+        error,
+      );
+    } on F1DatabaseException {
+      rethrow;
+    } on PostgrestException catch (error) {
+      final details = [
+        if (error.code != null) 'код ${error.code}',
+        error.message,
+        if (error.details?.toString().isNotEmpty ?? false)
+          error.details.toString(),
+        if (error.hint?.isNotEmpty ?? false) 'кеңес: ${error.hint}',
+      ].join(' — ');
+      final message = error.code == '42501'
+          ? '$errorMessage: сервер рұқсат бермеді (RLS). $details'
+          : '$errorMessage: $details';
+      throw F1DatabaseException(message, error);
+    } catch (error) {
+      final details = error.toString().toLowerCase();
+      if (details.contains('socketexception') ||
+          details.contains('failed to fetch') ||
+          details.contains('networkerror') ||
+          details.contains('network request failed')) {
+        throw F1DatabaseException(
+          'Интернет байланысы жоқ. Байланысты тексеріп, қайта көріңіз.',
+          error,
+        );
+      }
+      throw F1DatabaseException(errorMessage, error);
+    }
+  }
 
-  /// 9. Read, 13. Search, 14. Filter, 15. Sort operations for Races
   Future<List<F1Race>> getRaces({
     String query = '',
     RaceFilter filter = RaceFilter.all,
     RaceSort sort = RaceSort.roundAsc,
   }) async {
-    try {
-      final db = await _db;
-
-      final whereClauses = <String>[];
-      final whereArgs = <dynamic>[];
-
-      // 14. Filter
+    return _request(() async {
+      var request = _client.from('races').select();
       if (filter == RaceFilter.upcoming) {
-        whereClauses.add('is_completed = 0');
+        request = request.eq('is_completed', false);
       } else if (filter == RaceFilter.completed) {
-        whereClauses.add('is_completed = 1');
+        request = request.eq('is_completed', true);
       }
-
-      // 15. Multi-parameter Sorting
-      String orderBy;
-      switch (sort) {
-        case RaceSort.roundAsc:
-          orderBy = 'round ASC, name ASC';
-          break;
-        case RaceSort.roundDesc:
-          orderBy = 'round DESC, name ASC';
-          break;
-        case RaceSort.nameAsc:
-          orderBy = 'name ASC, round ASC';
-          break;
-        case RaceSort.nameDesc:
-          orderBy = 'name DESC, round ASC';
-          break;
-      }
-
-      final maps = await db.query(
-        'races',
-        where: whereClauses.isEmpty ? null : whereClauses.join(' AND '),
-        whereArgs: whereArgs.isEmpty ? null : whereArgs,
-        orderBy: orderBy,
-      );
-
-      var list = maps.map(F1Race.fromMap).toList();
-
-      // 13. Search (Unicode-safe for Kazakh/Cyrillic & Latin)
-      if (query.trim().isNotEmpty) {
-        final q = query.trim().toLowerCase();
-        list = list
-            .where((r) =>
-                r.name.toLowerCase().contains(q) ||
-                r.country.toLowerCase().contains(q) ||
-                r.circuit.toLowerCase().contains(q))
+      final (column, ascending, tieColumn, tieAscending) = switch (sort) {
+        RaceSort.roundAsc => ('round', true, 'name', true),
+        RaceSort.roundDesc => ('round', false, 'name', true),
+        RaceSort.nameAsc => ('name', true, 'round', true),
+        RaceSort.nameDesc => ('name', false, 'round', true),
+      };
+      final maps = await request
+          .order(column, ascending: ascending)
+          .order(tieColumn, ascending: tieAscending);
+      var races = maps.map((row) => F1Race.fromMap(row)).toList();
+      final q = query.trim().toLowerCase();
+      if (q.isNotEmpty) {
+        races = races
+            .where((race) =>
+                race.name.toLowerCase().contains(q) ||
+                race.country.toLowerCase().contains(q) ||
+                race.circuit.toLowerCase().contains(q))
             .toList();
       }
-
-      return list;
-    } catch (e) {
-      throw F1DatabaseException('Жарыстарды оқу кезінде қате орын алды', e);
-    }
+      return races;
+    }, 'Жарыстарды оқу кезінде сервер қатесі орын алды.');
   }
 
   Future<F1Race?> getRaceById(String id) async {
-    try {
-      final db = await _db;
-      final maps = await db.query('races', where: 'id = ?', whereArgs: [id]);
-      if (maps.isEmpty) return null;
-      return F1Race.fromMap(maps.first);
-    } catch (e) {
-      throw F1DatabaseException('Жарысты табу қатесі: $id', e);
-    }
+    return _request(() async {
+      final row =
+          await _client.from('races').select().eq('id', id).maybeSingle();
+      return row == null ? null : F1Race.fromMap(row);
+    }, 'Жарысты оқу қатесі: $id');
   }
 
-  /// 8. Create race
   Future<void> insertRace(F1Race race) async {
-    try {
-      final db = await _db;
-      await db.insert('races', race.toMap(),
-          conflictAlgorithm: ConflictAlgorithm.replace);
-    } catch (e) {
-      throw F1DatabaseException('Жарысты қосу қатесі', e);
-    }
+    return _request(() async {
+      await _client.from('races').upsert(race.toMap());
+    }, 'Жарысты қосу қатесі. Сервер рұқсаттарын тексеріңіз.');
   }
 
-  /// 10. Update race
   Future<void> updateRace(F1Race race) async {
-    try {
-      final db = await _db;
-      final count = await db.update(
-        'races',
-        race.toMap(),
-        where: 'id = ?',
-        whereArgs: [race.id],
-      );
-      if (count == 0) {
-        throw F1DatabaseException('Жаңарту үшін жарыс табылмады: ${race.id}');
+    return _request(() async {
+      final rows = await _client
+          .from('races')
+          .update(race.toMap())
+          .eq('id', race.id)
+          .select('id');
+      if (rows.isEmpty) {
+        throw F1DatabaseException(
+          'Жарыс жаңартылмады: жазба табылмады немесе сервер рұқсат бермеді.',
+        );
       }
-    } catch (e) {
-      throw F1DatabaseException('Жарысты жаңарту қатесі', e);
-    }
+    }, 'Жарысты жаңарту қатесі. Сервер рұқсаттарын тексеріңіз.');
   }
 
-  /// 11. Delete race
   Future<void> deleteRace(String id) async {
-    try {
-      final db = await _db;
-      await db.delete('races', where: 'id = ?', whereArgs: [id]);
-    } catch (e) {
-      throw F1DatabaseException('Жарысты өшіру қатесі', e);
-    }
+    return _request(() async {
+      final rows =
+          await _client.from('races').delete().eq('id', id).select('id');
+      if (rows.isEmpty) {
+        throw F1DatabaseException(
+          'Жарыс өшірілмеді: жазба табылмады немесе сервер рұқсат бермеді.',
+        );
+      }
+    }, 'Жарысты өшіру қатесі. Сервер рұқсаттарын тексеріңіз.');
   }
-
-  // ==========================================
-  // DRIVERS & TEAMS (Read, Filter, Sort, Search)
-  // ==========================================
 
   Future<List<F1Driver>> getDrivers({
     String query = '',
@@ -149,49 +149,40 @@ class F1Repository {
     DriverSort sort = DriverSort.pointsDesc,
   }) async {
     try {
-      final db = await _db;
-      final whereClauses = <String>[];
-      final whereArgs = <dynamic>[];
-
+      final rows = switch (sort) {
+        DriverSort.pointsDesc => await _client
+            .from('drivers')
+            .select()
+            .order('points', ascending: false)
+            .order('championship_position')
+            .order('name'),
+        DriverSort.pointsAsc =>
+          await _client.from('drivers').select().order('points').order('name'),
+        DriverSort.nameAsc => await _client
+            .from('drivers')
+            .select()
+            .order('name')
+            .order('points', ascending: false),
+        DriverSort.podiumsDesc => await _client
+            .from('drivers')
+            .select()
+            .order('podiums', ascending: false)
+            .order('points', ascending: false),
+      };
+      var drivers = rows.map((row) => F1Driver.fromMap(row)).toList();
       if (teamId != null && teamId.isNotEmpty) {
-        whereClauses.add('team_id = ?');
-        whereArgs.add(teamId);
+        drivers = drivers.where((driver) => driver.teamId == teamId).toList();
       }
-
-      String orderBy;
-      switch (sort) {
-        case DriverSort.pointsDesc:
-          orderBy = 'points DESC, podiums DESC, name ASC';
-          break;
-        case DriverSort.pointsAsc:
-          orderBy = 'points ASC, name ASC';
-          break;
-        case DriverSort.nameAsc:
-          orderBy = 'name ASC, points DESC';
-          break;
-        case DriverSort.podiumsDesc:
-          orderBy = 'podiums DESC, points DESC';
-          break;
-      }
-
-      final maps = await db.query(
-        'drivers',
-        where: whereClauses.isEmpty ? null : whereClauses.join(' AND '),
-        whereArgs: whereArgs.isEmpty ? null : whereArgs,
-        orderBy: orderBy,
-      );
-
-      var list = maps.map(F1Driver.fromMap).toList();
-      if (query.trim().isNotEmpty) {
-        final q = query.trim().toLowerCase();
-        list = list
-            .where((d) =>
-                d.name.toLowerCase().contains(q) ||
-                d.code.toLowerCase().contains(q) ||
-                d.country.toLowerCase().contains(q))
+      final q = query.trim().toLowerCase();
+      if (q.isNotEmpty) {
+        drivers = drivers
+            .where((driver) =>
+                driver.name.toLowerCase().contains(q) ||
+                driver.code.toLowerCase().contains(q) ||
+                driver.country.toLowerCase().contains(q))
             .toList();
       }
-      return list;
+      return drivers;
     } catch (e) {
       throw F1DatabaseException('Жүргізушілерді оқу қатесі', e);
     }
@@ -199,17 +190,21 @@ class F1Repository {
 
   Future<List<F1Team>> getTeams({String query = ''}) async {
     try {
-      final db = await _db;
-      final where = query.trim().isEmpty ? null : '(LOWER(name) LIKE ? OR LOWER(power_unit) LIKE ?)';
-      final args = query.trim().isEmpty ? null : ['%${query.trim().toLowerCase()}%', '%${query.trim().toLowerCase()}%'];
-
-      final maps = await db.query(
-        'teams',
-        where: where,
-        whereArgs: args,
-        orderBy: 'points DESC, championships DESC',
-      );
-      return maps.map(F1Team.fromMap).toList();
+      final rows = await _client
+          .from('teams')
+          .select()
+          .order('points', ascending: false)
+            .order('championship_position');
+      var teams = rows.map((row) => F1Team.fromMap(row)).toList();
+      final q = query.trim().toLowerCase();
+      if (q.isNotEmpty) {
+        teams = teams
+            .where((team) =>
+                team.name.toLowerCase().contains(q) ||
+                team.powerUnit.toLowerCase().contains(q))
+            .toList();
+      }
+      return teams;
     } catch (e) {
       throw F1DatabaseException('Командаларды оқу қатесі', e);
     }
@@ -217,77 +212,63 @@ class F1Repository {
 
   Future<List<F1Circuit>> getCircuits() async {
     try {
-      final db = await _db;
-      final maps = await db.query('circuits', orderBy: 'name ASC');
-      return maps.map(F1Circuit.fromMap).toList();
+      final rows = await _client.from('circuits').select().order('name');
+      return rows.map((row) => F1Circuit.fromMap(row)).toList();
     } catch (e) {
       throw F1DatabaseException('Трассаларды оқу қатесі', e);
     }
   }
 
-  // ==========================================
-  // REMINDERS (CRUD - 8, 9, 10, 11)
-  // ==========================================
-
   Future<List<F1Reminder>> getReminders() async {
     try {
-      final db = await _db;
-      final maps = await db.query('reminders', orderBy: 'created_at DESC');
-      return maps.map(F1Reminder.fromMap).toList();
+      final rows = await _client
+          .from('reminders')
+          .select()
+          .order('created_at', ascending: false);
+      return rows.map((row) => F1Reminder.fromMap(row)).toList();
     } catch (e) {
       throw F1DatabaseException('Еске салғыштарды оқу қатесі', e);
     }
   }
 
-  /// 8. Create reminder
   Future<void> insertReminder(F1Reminder reminder) async {
     try {
-      final db = await _db;
-      await db.insert('reminders', reminder.toMap(),
-          conflictAlgorithm: ConflictAlgorithm.replace);
+      await _client.from('reminders').upsert(_reminderData(reminder));
     } catch (e) {
       throw F1DatabaseException('Еске салғышты сақтау қатесі', e);
     }
   }
 
-  /// 10. Update reminder
-  Future<void> updateReminder(F1Reminder reminder) async {
-    try {
-      final db = await _db;
-      final count = await db.update(
-        'reminders',
-        reminder.toMap(),
-        where: 'id = ?',
-        whereArgs: [reminder.id],
-      );
-      if (count == 0) {
-        // Егер жазба табылмаса, жаңасын кірістіреміз
-        await insertReminder(reminder);
-      }
-    } catch (e) {
-      throw F1DatabaseException('Еске салғышты өзгерту қатесі', e);
-    }
-  }
+  Future<void> updateReminder(F1Reminder reminder) => insertReminder(reminder);
 
-  /// 11. Delete reminder
   Future<void> deleteReminder(String id) async {
     try {
-      final db = await _db;
-      await db.delete('reminders', where: 'id = ?', whereArgs: [id]);
+      await _client.from('reminders').delete().eq('id', id);
     } catch (e) {
       throw F1DatabaseException('Еске салғышты өшіру қатесі', e);
     }
   }
 
-  // ==========================================
-  // FAVORITES (16. Favorites функциясы)
-  // ==========================================
+  Map<String, dynamic> _reminderData(F1Reminder reminder) => {
+        ...reminder.toMap(),
+        'user_id': _currentUserId,
+      };
+
+  String get _currentUserId {
+    final id = _client.auth.currentUser?.id;
+    if (id == null) {
+      throw const F1DatabaseException('Пайдаланушы сессиясы табылмады');
+    }
+    return id;
+  }
 
   Future<Set<String>> getFavoriteRaceIds() async {
     try {
-      final db = await _db;
-      final maps = await db.query('favorites', where: "target_type = 'race'");
-      return maps.map((m) => m['target_id'] as String).toSet();
+      final rows = await _client
+          .from('favorites')
+          .select('target_id')
+          .eq('target_type', 'race');
+      return rows.map((row) => row['target_id'] as String).toSet();
     } catch (e) {
       throw F1DatabaseException('Таңдаулыларды оқу қатесі', e);
     }
@@ -295,56 +276,60 @@ class F1Repository {
 
   Future<bool> isFavorite(String targetId, {String targetType = 'race'}) async {
     try {
-      final db = await _db;
-      final maps = await db.query(
-        'favorites',
-        where: 'target_type = ? AND target_id = ?',
-        whereArgs: [targetType, targetId],
-      );
-      return maps.isNotEmpty;
+      final row = await _client
+          .from('favorites')
+          .select('id')
+          .eq('target_type', targetType)
+          .eq('target_id', targetId)
+          .maybeSingle();
+      return row != null;
     } catch (e) {
       throw F1DatabaseException('Таңдаулыны тексеру қатесі', e);
     }
   }
 
-  Future<void> toggleFavorite(String targetId, {String targetType = 'race'}) async {
+  Future<void> toggleFavorite(String targetId,
+      {String targetType = 'race'}) async {
     try {
-      final db = await _db;
-      final existing = await db.query(
-        'favorites',
-        where: 'target_type = ? AND target_id = ?',
-        whereArgs: [targetType, targetId],
-      );
-
-      if (existing.isNotEmpty) {
-        await db.delete(
-          'favorites',
-          where: 'target_type = ? AND target_id = ?',
-          whereArgs: [targetType, targetId],
-        );
+      final existing = await _client
+          .from('favorites')
+          .select('id')
+          .eq('target_type', targetType)
+          .eq('target_id', targetId)
+          .maybeSingle();
+      if (existing != null) {
+        await _client.from('favorites').delete().eq('id', existing['id']);
       } else {
-        final fav = F1Favorite(
-          id: 'fav_${targetId}_${DateTime.now().millisecondsSinceEpoch}',
-          targetType: targetType,
-          targetId: targetId,
-          createdAt: DateTime.now().toIso8601String(),
-        );
-        await db.insert('favorites', fav.toMap());
+        await _client.from('favorites').insert({
+          'id': 'fav_${targetId}_${DateTime.now().microsecondsSinceEpoch}',
+          'user_id': _currentUserId,
+          'target_type': targetType,
+          'target_id': targetId,
+          'created_at': DateTime.now().toIso8601String(),
+        });
       }
     } catch (e) {
       throw F1DatabaseException('Таңдаулы күйін өзгерту қатесі', e);
     }
   }
 
-  // ==========================================
-  // DATABASE RESET / REFRESH
-  // ==========================================
+  Future<List<F1RaceResult>> getRaceResults(String raceId) =>
+      _request(() async {
+        final rows = await _client
+            .from('race_results')
+            .select()
+            .eq('race_id', raceId)
+            .order('classification_order');
+        return rows.map(F1RaceResult.fromMap).toList();
+      }, 'Жарыс нәтижелерін жүктеу сәтсіз аяқталды.');
 
   Future<void> resetDatabase() async {
     try {
-      await _appDb.resetDatabase();
+      final userId = _currentUserId;
+      await _client.from('favorites').delete().eq('user_id', userId);
+      await _client.from('reminders').delete().eq('user_id', userId);
     } catch (e) {
-      throw F1DatabaseException('Деректер қорын тазалау қатесі', e);
+      throw F1DatabaseException('Жеке деректерді тазалау қатесі', e);
     }
   }
 }

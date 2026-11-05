@@ -19,7 +19,8 @@ class RaceDetailScreen extends StatelessWidget {
         title: const F1Logo(),
         actions: [
           IconButton(
-            tooltip: favorite ? 'Таңдаулылардан алып тастау' : 'Таңдаулыларға қосу',
+            tooltip:
+                favorite ? 'Таңдаулылардан алып тастау' : 'Таңдаулыларға қосу',
             icon: Icon(
               favorite ? Icons.favorite : Icons.favorite_border,
               color: favorite ? F1Colors.red : null,
@@ -59,7 +60,8 @@ class RaceDetailScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     Text(
                       race.name.toUpperCase(),
-                      style: const TextStyle(fontSize: 27, fontWeight: FontWeight.w900),
+                      style: const TextStyle(
+                          fontSize: 27, fontWeight: FontWeight.w900),
                     ),
                     const SizedBox(height: 7),
                     Text(
@@ -82,7 +84,8 @@ class RaceDetailScreen extends StatelessWidget {
         F1ListTile(
           title: 'Күні мен мәртебесі',
           subtitle: race.date,
-          leading: const Icon(Icons.calendar_today_outlined, color: F1Colors.red),
+          leading:
+              const Icon(Icons.calendar_today_outlined, color: F1Colors.red),
         ),
         F1ListTile(
           title: 'Айналымдар саны (Laps)',
@@ -97,14 +100,21 @@ class RaceDetailScreen extends StatelessWidget {
               : 'Аяқталды деп белгілеу',
           outlined: true,
           icon: race.isCompleted ? Icons.replay : Icons.check_circle_outline,
-          onPressed: () {
+          onPressed: () async {
             final updated = race.copyWith(
               isCompleted: !race.isCompleted,
               date: race.isCompleted ? 'АЛДАҒЫ' : 'АЯҚТАЛДЫ',
             );
-            store.updateRace(updated);
+            final succeeded = await store.updateRace(updated);
+            if (!context.mounted) return;
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Жарыс күйі жаңартылды: ${updated.isCompleted ? "Аяқталды" : "Алдағы"}')),
+              SnackBar(
+                content: Text(
+                  succeeded
+                      ? 'Жарыс күйі жаңартылды: ${updated.isCompleted ? "Аяқталды" : "Алдағы"}'
+                      : store.errorMessage ?? 'Жарысты жаңарту сәтсіз аяқталды',
+                ),
+              ),
             );
           },
         ),

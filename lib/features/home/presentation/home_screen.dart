@@ -35,7 +35,8 @@ class HomeScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             child: ListTile(
               leading: const Icon(Icons.error_outline, color: F1Colors.red),
-              title: Text(store.errorMessage!, style: const TextStyle(fontSize: 12)),
+              title: Text(store.errorMessage!,
+                  style: const TextStyle(fontSize: 12)),
               trailing: IconButton(
                 icon: const Icon(Icons.close, size: 18),
                 onPressed: store.clearError,
@@ -160,13 +161,20 @@ class HomeScreen extends StatelessWidget {
         title: 'Жарыс нәтижелері',
         subtitle: 'Мәре реті мен ұпайлар',
         leading: const Icon(Icons.flag_outlined, color: F1Colors.red),
-        onTap: () => Navigator.pushNamed(context, Routes.results, arguments: nextRace.id),
+        onTap: () => Navigator.pushNamed(context, Routes.results,
+            arguments: nextRace.id),
       ),
       F1ListTile(
         title: 'Чемпионат ұпайлары',
         subtitle: 'Жүргізушілер мен конструкторлар',
         leading: const Icon(Icons.emoji_events_outlined, color: F1Colors.red),
         onTap: () => AppShell.select(context, 2),
+      ),
+      F1ListTile(
+        title: 'F1 QR-сканері',
+        subtitle: 'Билет QR-коды арқылы жарыс мәліметін ашу',
+        leading: const Icon(Icons.qr_code_scanner, color: F1Colors.red),
+        onTap: () => Navigator.pushNamed(context, Routes.scanner),
       ),
     ]);
   }
