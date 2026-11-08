@@ -3,6 +3,7 @@ import '../../../core/navigation/app_router.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/widgets/f1_widgets.dart';
 import '../../../data/store/app_store.dart';
+import 'race_weekend_section.dart';
 
 class RaceDetailScreen extends StatelessWidget {
   const RaceDetailScreen({super.key, required this.raceId});
@@ -138,6 +139,7 @@ class RaceDetailScreen extends StatelessWidget {
             arguments: race.id,
           ),
         ),
+        if (race.id == raceId) RaceWeekendSection(raceId: raceId),
       ]),
     );
   }

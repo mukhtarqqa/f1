@@ -13,6 +13,7 @@ dependencies:
   permission_handler: ^13.0.2
   provider: ^6.1.5+1
   supabase_flutter: ^2.18.3
+  url_launcher: ^6.3.3
 
 dev_dependencies:
   flutter_test:
@@ -21,3 +22,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/f1_weekends_2026.json

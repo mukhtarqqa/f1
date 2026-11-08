@@ -114,15 +114,16 @@ class F1Tag extends StatelessWidget {
 }
 
 class F1Panel extends StatelessWidget {
-  const F1Panel({required this.child, this.padding = const EdgeInsets.all(16), super.key});
+  const F1Panel({required this.child, this.padding = const EdgeInsets.all(16), this.onTap, super.key});
   final Widget child;
   final EdgeInsetsGeometry padding;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) => Container(
         padding: padding,
         decoration: BoxDecoration(color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(16)),
-        child: child,
+        child: onTap == null ? child : InkWell(onTap: onTap, child: child),
       );
 }
 
