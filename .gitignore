@@ -10,3 +10,9 @@ build/
 *.iml
 android/local.properties
 ios/Pods/
+
+# Local coursework and screenshots
+/practice*_evidence/
+/screenshots/
+/PRACTICE*_SCREENSHOT_GUIDE.md
+/tools/prepare_practice*_evidence.py
