@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import '../../../core/navigation/app_router.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/widgets/f1_widgets.dart';
@@ -6,6 +7,7 @@ import '../../../data/models/f1_models.dart';
 import '../../../data/repositories/f1_repository.dart';
 import '../../../data/store/app_store.dart';
 import '../../../data/database/race_realtime.dart';
+import '../../../data/database/supabase_service.dart';
 
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
@@ -17,6 +19,36 @@ class CalendarScreen extends StatefulWidget {
 class _CalendarScreenState extends State<CalendarScreen> {
   final TextEditingController searchController = TextEditingController();
   bool _refreshing = false;
+  bool _syncing = false;
+
+  Future<void> _syncF1() async {
+    final store = StoreScope.of(context, listen: false);
+    final token = SupabaseService.client.auth.currentSession?.accessToken;
+    if (_syncing || !store.canManageRaces || token == null) return;
+    setState(() => _syncing = true);
+    var message = 'F1 деректерін жаңарту мүмкін болмады.';
+    try {
+      final response = await http.post(
+        Uri.base.resolve('/api/sync-f1'),
+        headers: {'Authorization': 'Bearer $token'},
+      ).timeout(const Duration(seconds: 130));
+      if (response.statusCode == 200) {
+        await store.refreshAll();
+        message = 'F1 деректері жаңартылды.';
+      } else if (response.statusCode == 409) {
+        message = 'Жаңарту жүріп жатыр немесе F1 деректері толық емес.';
+      }
+    } catch (_) {
+      // Keep the existing calendar visible when the server is unavailable.
+    } finally {
+      if (mounted) {
+        setState(() => _syncing = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(message)),
+        );
+      }
+    }
+  }
 
   @override
   void dispose() {
@@ -97,6 +129,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
         actions: store.canManageRaces
             ? [
                 IconButton(
+                  tooltip: 'F1 деректерін жаңарту',
+                  icon: const Icon(Icons.sync),
+                  onPressed: _syncing ? null : _syncF1,
+                ),
+                IconButton(
                   tooltip: 'Жаңа жарыс қосу',
                   icon: const Icon(Icons.add_circle_outline,
                       color: F1Colors.red, size: 28),
@@ -107,7 +144,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               ]
             : const [],
       ),
-      if (store.isLoading || store.isRaceLoading || _refreshing)
+      if (store.isLoading || store.isRaceLoading || _refreshing || _syncing)
         const LinearProgressIndicator(),
       Card(
         child: ListTile(

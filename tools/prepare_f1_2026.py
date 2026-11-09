@@ -9,6 +9,7 @@ from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime
 import json
+import os
 from pathlib import Path
 import re
 import time
@@ -71,7 +72,8 @@ def clean(node):
 def fetch(path):
     import requests
     from bs4 import BeautifulSoup
-    cache = ROOT / 'build/f1_source_cache' / (path.strip('/').replace('/', '_') + '.html')
+    cache_dir = Path(os.environ.get('F1_CACHE_DIR', ROOT / 'build/f1_source_cache'))
+    cache = cache_dir / (path.strip('/').replace('/', '_') + '.html')
     if cache.exists() and time.time() - cache.stat().st_mtime < 900:
         html = cache.read_text(encoding='utf-8')
     else:

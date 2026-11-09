@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/sync-f1.py": {
+      "includeFiles": "tools/prepare_f1_2026.py",
+      "maxDuration": 120
+    }
+  }
+}
